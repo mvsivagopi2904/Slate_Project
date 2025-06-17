@@ -1,0 +1,36 @@
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+<div class="device-container">
+  <h2>Security</h2>
+
+  <div class="device-box">
+    <div class="device-header">
+      <h3>Device Sign-ins</h3>
+      <p>View and manage the list of locations where you've signed in on your devices.</p>
+    </div>
+
+    <div class="device-entry" *ngFor="let device of devices">
+      <div class="avatar">{{ device.initials }}</div>
+      
+      <div class="device-info">
+        <div class="device-name">{{ device.name }}</div>
+        <div class="device-location">{{ device.location }}</div>
+      </div>
+    </div>
+  </div>
+</div>

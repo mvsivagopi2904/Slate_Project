@@ -1,0 +1,58 @@
+<div class="sidebar">
+  <nav>
+    <ul>
+      <!-- Profile -->
+      <li [class.expanded]="activeSection === 'profile'" (click)="toggleSection('profile')">
+        <div class="menu-header">
+          <span class="icon">
+            <!-- Profile Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 24 24" fill="black">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </span>
+          <span class="menu-title">Profile</span>
+        </div>
+        <div class="submenu" *ngIf="activeSection === 'profile'">
+          <a routerLink="/emailaddress">Email Address</a>
+          <a routerLink="/mobile-numbers">Mobile Number</a>
+        </div>
+      </li>
+
+      <!-- Security -->
+      <li [class.expanded]="activeSection === 'security'" (click)="toggleSection('security')">
+        <div class="menu-header">
+          <span class="icon">
+            <!-- Shield Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 24 24" fill="green">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+          </span>
+          <span class="menu-title">Security</span>
+        </div>
+        <div class="submenu" *ngIf="activeSection === 'security'">
+          <a routerLink="/changepassword"><span class="dot"></span>Password</a>
+          <a routerLink="/device-signins">Device Sign-ins</a>
+        </div>
+      </li>
+
+      <!-- Settings -->
+      <li [class.expanded]="activeSection === 'settings'" (click)="toggleSection('settings')">
+        <div class="menu-header">
+          <span class="icon">
+            <!-- Gear Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 24 24" fill="black">
+              <path d="M19.14,12.94 C19.14,12.63 19.11,12.32 19.07,12.02 L21.19,10.47 L19.31,6.36 L16.38,7.19 C15.9,6.81 15.39,6.5 14.84,6.27 L14.49,3.5 H9.83 L9.51,6.27 C8.61,6.5 8.1,6.81 7.62,7.19 L5.12,6.19 L2.69,10.01 L4.93,12.02 C4.89,12.32 4.86,12.63 4.86,12.94 C4.86,13.25 4.89,13.56 4.93,13.86 L2.69,15.87 L5.12,19.69 L7.62,18.69 C8.1,19.07 8.61,19.38 9.16,19.61 L9.51,22.38 H14.17 L14.49,19.61 C15.39,19.38 15.9,19.07 16.38,18.69 L18.88,19.69 L21.31,15.87 L19.07,13.86 C19.11,13.56 19.14,13.25 19.14,12.94 Z M12,15.5 C10.07,15.5 8.5,13.93 8.5,12 C8.5,10.07 10.07,8.5 12,8.5 C13.93,8.5 15.5,10.07 15.5,12 C15.5,13.93 13.93,15.5 12,15.5 Z"/>
+            </svg>
+          </span>
+          <span class="menu-title">Settings</span>
+        </div>
+        <div class="submenu" *ngIf="activeSection === 'settings'">
+          <a routerLink="/settings-preferences">Preferences</a>
+          <a routerLink="/settings-authorizedwebsites">Authorized Websites</a>
+          <a routerLink="/settings-linkedaccount">Linked Account</a>
+          <a routerLink="/settings-closeaccount">Close Account</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

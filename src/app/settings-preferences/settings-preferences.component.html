@@ -1,0 +1,69 @@
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+<div class="container">
+  <h2>Settings</h2>
+
+  <div class="section">
+    <h3>Preferences</h3>
+    <p>Manage your preferences for date format, privacy settings, and email notifications.</p>
+
+    <div class="setting-group">
+      <label>Date Format</label>
+      <select [(ngModel)]="dateFormat">
+        <option value="dd/MM/yy">dd/MM/yy (09/01/25)</option>
+        <option value="MM/dd/yy">MM/dd/yy (01/09/25)</option>
+        <option value="yyyy-MM-dd">yyyy-MM-dd (2025-01-09)</option>
+      </select>
+      <small>Select the date and time format to be used for your HY Slate account activity.</small>
+    </div>
+
+    <div class="setting-group">
+      <label>Profile Picture Visibility</label>
+      <p>You need to add a profile picture to select its visibility setting.</p>
+      <button>Add profile picture</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Email notifications</h3>
+
+    <div class="notif-group">
+      <strong>New sign-in to account alert</strong>
+      <p>Receive email alerts whenever your account is signed in from a new device, browser, or location.</p>
+      <input type="checkbox" [(ngModel)]="notifications.signinAlert" />
+    </div>
+
+    <div class="notif-group">
+      <strong>Third-party app access alert</strong>
+      <p>
+        Receive email alerts whenever your account is accessed from a new third-party app or location.
+        Example: IMAP/POP clients such as mail apps and calendar apps.
+      </p>
+      <input type="checkbox" [(ngModel)]="notifications.thirdPartyAccess" />
+    </div>
+
+    <div class="notif-group">
+      <strong>Newsletter subscription</strong>
+      <p>
+        Receive marketing communication regarding HY Slate products, services, and events from HY Slate and
+        its regional partners.
+      </p>
+      <input type="checkbox" [(ngModel)]="notifications.newsletter" />
+    </div>
+  </div>
+</div>

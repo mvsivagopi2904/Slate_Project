@@ -1,0 +1,65 @@
+.sidebar {
+  width: 230px;
+  background-color: #1976d2;
+  color: black;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+nav ul li.expanded {
+  background-color: #bbdefb; /* Light blue highlight */
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.menu-header .icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-title {
+  font-size: 1.1rem;
+}
+
+.submenu {
+  padding-left: 2.5rem;
+  padding-bottom: 0.8rem;
+}
+
+.submenu a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.submenu a:hover {
+  color: #1565c0;
+}
+
+.submenu .dot {
+  height: 6px;
+  width: 6px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}

@@ -1,0 +1,57 @@
+<!-- <div class="modal">
+  <div class="modal-content">
+    <h3>Add New Email</h3>
+    <input type="email" [(ngModel)]="email" placeholder="Enter your email" />
+    <div class="modal-actions">
+      <button (click)="submit()">Send OTP</button>
+      <button class="cancel" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div> -->
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+<div class="email-verification-container">
+  <h2>Email Address</h2>
+
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Verify Email Address</h3>
+      <button class="close-button">&times;</button>
+    </div>
+
+    <div class="modal-content">
+      <!-- <p>OTP has been sent to xyz@email.com</p> -->
+
+      <label for="otp">Enter OTP</label>
+      <input
+        id="otp"
+        type="password"
+        maxlength="6"
+        class="otp-input"
+        [(ngModel)]="otp"
+        placeholder="••••••"
+      />
+
+      <a class="resend-link" href="#" (click)="resendOtp()">Resend OTP</a>
+
+      <div class="button-group">
+        <button class="verify-btn" (click)="verifyOtp()">Verify</button>
+        <button class="back-btn" (click)="goBack()">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

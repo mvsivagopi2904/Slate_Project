@@ -1,0 +1,41 @@
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+
+<div class="container">
+  <h2>Settings</h2>
+
+  <div class="section-header">
+    <h3>Close Account</h3>
+    <p>
+      Permanently delete all the data associated with your account and the apps you use.
+      Refer help article
+    </p>
+  </div>
+
+  <div class="close-box">
+    <div class="icon-wrapper">
+      <img src="assets/delete-icon.PNG" alt="Delete Icon" />
+    </div>
+    <p class="warning-text">
+      Closing your Slate Account will permanently delete all your account information and you
+      will no longer be able to use any of the Slate.
+    </p>
+
+    <!-- <button class="close-btn">Close Account</button> -->
+    <button class="close-btn" [routerLink]="'/closeaccount2'">Close Account</button>
+  </div>
+</div>

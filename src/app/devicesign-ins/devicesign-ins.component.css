@@ -1,0 +1,122 @@
+.device-container {
+  padding: 20px;
+  background-color: #e6ecf1;
+  height: 100vh;
+}
+
+.device-box {
+  background-color: #f8f9fb;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.device-header {
+  background-color: #d6d6d6;
+  padding: 16px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.device-header h3 {
+  margin: 0;
+}
+
+.device-entry {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.avatar {
+  background-color: #2c7db5;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.device-name {
+  font-weight: 500;
+}
+
+.device-location {
+  margin-left: auto;
+  color: #333;
+}
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px; 
+  background-color: #1e88e5; 
+  color: white;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+.top-right-icons {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .user-icon {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+}
+.branding-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  border-bottom: 1px solid #ddd;
+}
+
+.branding-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2070c0;
+}

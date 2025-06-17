@@ -1,0 +1,110 @@
+.profile-dropdown {
+  width: 320px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  font-family: Arial, sans-serif;
+}
+
+.profile-header {
+  background: #d6f0f0;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid #000;
+  background: url('https://via.placeholder.com/70') center/cover no-repeat;
+}
+
+.user-info {
+  margin-top: 10px;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.email,
+.userid {
+  font-size: 14px;
+  color: #333;
+}
+
+.signout-btn {
+  margin-top: 10px;
+  background: #d32020;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.help-docs {
+  padding: 15px 20px;
+}
+
+.help-docs h4 {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #111;
+}
+
+.help-docs ul {
+  list-style: none;
+  padding: 0;
+}
+
+.help-docs li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #000;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.icon.book {
+  background: url('https://img.icons8.com/fluency/48/book.png') no-repeat center/contain;
+}
+
+.icon.notebook {
+  background: url('https://img.icons8.com/fluency/48/notebook.png') no-repeat center/contain;
+}
+
+.icon.faq {
+  background: url('https://img.icons8.com/fluency/48/faq.png') no-repeat center/contain;
+}
+
+.icon.shield {
+  background: url('https://img.icons8.com/fluency/48/shield.png') no-repeat center/contain;
+}
+
+.icon.contact {
+  background: url('https://img.icons8.com/fluency/48/contacts.png') no-repeat center/contain;
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  right: -90px;
+  transform: translateY(-50%);
+  background: #a659f5;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}

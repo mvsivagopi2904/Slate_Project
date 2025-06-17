@@ -1,0 +1,68 @@
+.forgot-email-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  height: 100vh;
+
+  .forgot-email-box {
+    max-width: 400px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      color: #007bdb;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+
+      .icon {
+        margin-right: 0.5rem;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        width: 100%;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bdb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: #b3d7f0;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .illustration {
+    img {
+      max-width: 400px;
+      height: auto;
+    }
+  }
+}

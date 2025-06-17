@@ -1,0 +1,177 @@
+.email-verification-container {
+  flex-grow: 1;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #e9eef3;
+  min-height: 100vh;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+}
+
+.modal-box {
+  position: fixed; /* Center relative to screen */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 380px;
+  z-index: 2000; /* Ensure it's above everything */
+}
+.modal-header {
+  background-color: #d9d9d9;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .close-button {
+    background: #333;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+}
+
+.modal-content {
+  padding: 1.5rem;
+
+  p {
+    margin: 0 0 1rem;
+    font-size: 14px;
+  }
+
+  label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .otp-input {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    font-size: 16px;
+    border: 1px solid #a9bccb;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .resend-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #0066cc;
+    text-decoration: underline;
+    margin: 4px 0 12px;
+    cursor: pointer;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 0.5rem;
+
+    .verify-btn {
+      background-color: #5c94b8;
+      border: none;
+      color: white;
+      padding: 0.4rem 1.2rem;
+      font-size: 14px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .back-btn {
+      background-color: #e6e6e6;
+      border: none;
+      color: #333;
+      padding: 0.4rem 1.2rem;
+      font-size: 14px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  }
+}
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px; 
+  background-color: #1e88e5; 
+  color: white;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+.top-right-icons {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .user-icon {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+}
+.branding-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  border-bottom: 1px solid #ddd;
+}
+
+.branding-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2070c0;
+}

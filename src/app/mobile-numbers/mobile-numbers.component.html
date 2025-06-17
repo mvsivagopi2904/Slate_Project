@@ -1,0 +1,67 @@
+<!-- <div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+<div class="mobile-wrapper">
+  <h2>Mobile Numbers</h2>
+  <div class="box">
+    <h3>My Mobile Numbers</h3>
+    <p>View and manage all of the mobile numbers associated with your account.</p>
+    <ul>
+      <li *ngFor="let number of mobileNumbers">
+        📞 {{ number }}
+      </li>
+    </ul>
+    <button (click)="openAddMobileDialog()">+ Add Mobile Number</button>
+  </div>
+</div> -->
+
+<!-- <div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+  <div class="main-content">
+    <div class="mobile-wrapper">
+  <h2>Mobile Numbers</h2>
+  <div class="box">
+    <h3>My Mobile Numbers</h3>
+    <p>View and manage all of the mobile numbers associated with your account.</p>
+    <ul>
+      <li *ngFor="let number of mobileNumbers">
+        📞 {{ number }}
+      </li>
+    </ul>
+    <button (click)="openAddMobileDialog()">+ Add Mobile Number</button>
+  </div>
+</div>
+    
+  </div>
+</div> -->
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+   <div class="profile-content">
+    <h2>Mobile Numbers</h2>
+  <div class="main-content">
+    
+      <div class="mobile-box">
+        <h3>My Mobile Numbers </h3>
+        <p>View and manage all of the mobile numbers associated with your account.</p>
+      </div>
+      <div class="add-mobile-modal">
+        <button (click)="onAddMobileNumber()">
+          <span class="plus">+</span> Add Mobile Number
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

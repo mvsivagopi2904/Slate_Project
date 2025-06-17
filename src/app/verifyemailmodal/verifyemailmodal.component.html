@@ -1,0 +1,27 @@
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+<h2 class="modal-title">Verify Email Address</h2>
+<p>OTP has been sent to {{ data.email }}</p>
+
+<form [formGroup]="otpForm">
+  <label>Enter OTP</label>
+  <input formControlName="otp" type="password" placeholder="Enter OTP" />
+  <a class="resend" (click)="resendOtp()">Resend OTP</a>
+
+  <div class="actions">
+    <button type="button" (click)="verify()">Verify</button>
+    <button type="button" (click)="dialogRef.close()">Back</button>
+  </div>
+</form>

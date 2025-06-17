@@ -1,0 +1,99 @@
+ <!-- <app-sidebar></app-sidebar>
+<h2>My Mobile Numbers</h2>
+<p>A one-time password (OTP) will be sent to your mobile number via SMS.</p>
+
+<form [formGroup]="mobileForm">
+  <label>Mobile Number</label>
+  <div>
+    <input formControlName="countryCode" style="width: 60px;"  />
+    <input formControlName="number" placeholder="1234512345" />
+  </div>
+  <button type="button" (click)="addNumber()">Add</button>
+</form> -->
+
+<!-- 
+<div class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>My Mobile Numbers</h3>
+      <button class="close-btn" (click)="closeModal()">&#10005;</button>
+    </div>
+
+    <div class="modal-body">
+      <p>A one-time password (OTP) will be sent to your mobile number via SMS.</p>
+
+      <label for="mobile">Mobile Number</label>
+      <div class="mobile-input">
+        <select [(ngModel)]="countryCode">
+          <option value="+91">🇮🇳 +91</option>
+        </select>
+        <input
+          id="mobile"
+          type="tel"
+          [(ngModel)]="mobileNumber"
+          maxlength="10"
+          placeholder="1234512345"
+        />
+      </div>
+
+      <button class="add-btn" (click)="addMobile()">Add</button>
+    </div>
+  </div>
+</div> -->
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <div class="overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add Mobile Number</h3>
+        <button class="close-btn" (click)="closeModal()">✖</button>
+      </div>
+
+      <div class="modal-body">
+        <p>A one-time password (OTP) will be sent to your mobile number via SMS.</p>
+
+        <form [formGroup]="mobileForm" (ngSubmit)="submitMobile()">
+          <label for="mobile">Mobile Number</label>
+          <div class="mobile-input-group">
+            <select formControlName="countryCode">
+              <option value="+91">🇮🇳 +91</option>
+              <!-- Add more countries if needed -->
+            </select>
+            <input
+              type="tel"
+              id="mobile"
+              formControlName="mobileNumber"
+              placeholder="1234512345"
+              maxlength="10"
+              [class.invalid]="mobileForm.controls['mobileNumber'].invalid && mobileForm.controls['mobileNumber'].touched"
+            />
+          </div>
+
+          <div *ngIf="mobileForm.controls['mobileNumber'].invalid && mobileForm.controls['mobileNumber'].touched" class="error">
+            Please enter a valid 10-digit mobile number.
+          </div>
+
+          <button [routerLink]="'/verify-mobile'" type="submit" class="add-btn" [disabled]="mobileForm.invalid">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

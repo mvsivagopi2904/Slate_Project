@@ -1,0 +1,51 @@
+ <!-- <app-sidebar></app-sidebar>
+<div class="container">
+  <div class="email-section">
+    <h2>Email Address</h2>
+
+    <div class="email-box">
+      <h3>My Email Addresses</h3>
+      <p>You can use the following email addresses to sign in to your account and also to reset your password if you ever forget it.</p>
+    </div>
+
+    <div class="add-email">
+      <button (click)="onAddEmail()">
+        <span class="plus">+</span> Add Email Address
+      </button>
+    </div>
+  </div>
+</div>
+ -->
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+
+
+ <div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+   <div class="profile-content">
+    <h2>Email Address</h2>
+  <div class="main-content">
+   
+      <div class="email-box">
+        <h3>My Email Addresses</h3>
+        <p>You can use the following email addresses to sign in to your account and also to reset your password if you ever forget it.</p>
+      </div>
+      <div class="add-email">
+        <button (click)="onAddEmail()">
+          <span class="plus">+</span> Add Email Address
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

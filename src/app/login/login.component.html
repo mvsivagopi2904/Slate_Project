@@ -1,0 +1,42 @@
+<div class="branding-container">
+  <div class="branding-left">
+    <img src="assets\logo.PNG" alt="hy logo" class="logo" />
+    <span class="brand-name"></span>
+  </div>
+   </div>
+<div class="login-container">
+
+  <div class="login-box">
+    <h2>Sign in to HY Slate</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <i class="icon-user"></i>
+        <input type="email" formControlName="email" placeholder="Email/Id" />
+      </div>
+      <div class="input-group">
+        <i class="icon-lock"></i>
+        <input type="password" formControlName="password" placeholder="Password" />
+      </div>
+      <div class="forgot-links">
+        <a routerLink="/forgotpassword">Forgot Password?</a>
+        <a routerLink="/forgotemailid">Forgot Email/Id?</a>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Do you have an account? <a routerLink="/registration">Registration</a></p>
+    <div class="social-login">
+      <span>Or sign up with</span>
+      <div class="icons">
+        <img src="assets/google.PNG" alt="Google" />
+        <img src="assets/microsoft.PNG" alt="Microsoft" />
+        <img src="assets/linkedin.PNG" alt="LinkedIn" />
+        <img src="assets/twitter.PNG" alt="Twitter" />
+        <img src="assets/github.PNG" alt="GitHub" />
+      </div>
+    </div>
+  </div>
+
+  <div class="login-image">
+    <img src="assets/login.PNG" alt="Login illustration" />
+  </div>
+</div>

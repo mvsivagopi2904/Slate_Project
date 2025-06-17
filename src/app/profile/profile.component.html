@@ -1,0 +1,75 @@
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+<div class="profile-page">
+ 
+
+  <div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <div class="profile-content">
+    <h2>Profile</h2>
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="user-info">
+          <div>
+            <strong>User</strong>
+            <p>gmail</p>
+          </div>
+        </div>
+        <button class="edit-btn" (click)="editProfile()">Edit</button>
+      </div>
+
+      <div class="profile-details">
+        <div class="row">
+          <div>
+            <label>Full Name</label>
+            <p>User</p>
+          </div>
+          <div>
+            <label>Display Name</label>
+            <p>User</p>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Gender</label>
+            <p>Male</p>
+          </div>
+          <div>
+            <label>Country/Region</label>
+            <p>🇮🇳 India</p>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>State</label>
+            <p>Telangana</p>
+          </div>
+          <div>
+            <label>Language</label>
+            <p>English - United States</p>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Time zone</label>
+            <p>(GMT +05:30) India Standard Time (Asia/Kolkata)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

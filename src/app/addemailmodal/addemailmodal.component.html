@@ -1,0 +1,43 @@
+<div class="branding-left">
+  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
+  <span class="brand-name"></span>
+</div>
+<div class="top-right-icons">
+<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
+ 
+</button>
+ 
+<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+</button>
+</div>
+
+<div class="app-container">
+  <app-sidebar class="sidebar"></app-sidebar>
+<div class="overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Email Address</h3>
+      <button class="close-btn" (click)="closeModal()">✖</button>
+    </div>
+
+    <div class="modal-body">
+      <p>A one-time password (OTP) will be sent to your email address.</p>
+
+      <form [formGroup]="emailForm" (ngSubmit)="submitEmail()">
+        <label for="email">Enter your email address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="example@email.com"
+          [class.invalid]="emailForm.controls.email.invalid && emailForm.controls.email.touched"
+        />
+        <div *ngIf="emailForm.controls['email'].invalid && emailForm.controls['email'].touched" class="error">
+          Please enter a valid email address.
+        </div>
+
+        <button type="submit" class="add-btn" [disabled]="emailForm.invalid">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
