@@ -18,6 +18,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
+  router: any;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
@@ -59,6 +60,9 @@ console.log(formData)
         console.log('Registration successful', res);
         alert('Registration successful!');
         this.registrationForm.reset();
+          this.router.navigate(['/login']);
+
+
       },
       error: (err) => {
         console.error('Error during registration', err);
