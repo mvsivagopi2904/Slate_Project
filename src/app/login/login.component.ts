@@ -26,25 +26,25 @@ export class LoginComponent {
     password: ['', Validators.required]
   });
 
-  onSubmit() {
+   onSubmit() {
     if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
+       this.loginForm.markAllAsTouched();
       return;
-    }
+     }
 
-    const formData = this.loginForm.value;
+     const formData = this.loginForm.value;
 
     this.http.post('http://localhost:8080/api/user/login', formData).subscribe({
       next: (res: any) => {
         console.log('Login successful', res);
-        alert('Login successful!');
-        // You can store token if returned: localStorage.setItem('token', res.token);
+         alert('Login successful!');
+          // You can store token if returned: localStorage.setItem('token', res.token);
         this.router.navigate(['/profile']);
-      },
-      error: (err) => {
-        console.error('Login failed', err);
-        alert('Login failed. Please check your credentials.');
-      }
-    });
-  }
+       },
+       error: (err) => {
+         console.error('Login failed', err);
+         alert('Login failed. Please check your credentials.');
+       }
+     });
+   }
 }

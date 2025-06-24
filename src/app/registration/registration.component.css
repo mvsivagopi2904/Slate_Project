@@ -59,10 +59,16 @@
 }
 
 .form-section {
-  flex: 1;
-  margin-right: 40px;
-}
+  display: flex;
+  width: 100%;
 
+  form {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin-right: 20px;
+    width: 67%;
+  }
+}
 form h3 {
   color: #0066cc;
   margin-bottom: 20px;
@@ -95,6 +101,7 @@ form h3 {
   margin-top: 30px;
   display: flex;
   gap: 10px;
+ 
 }
 
 .register-btn {
@@ -107,7 +114,7 @@ form h3 {
 }
 
 .cancel-btn {
-  background-color: #ddd;
+  background-color: #f0f5f1;
   color: black;
   padding: 10px 20px;
   border: none;
@@ -124,4 +131,27 @@ form h3 {
 
 .image-section img {
   max-width: 300px;
+}
+
+.error {
+  span {
+    color: red;
+  }
+}
+.send-otp-btn {
+  background-color: #28a745;   /* Bright green */
+  color: white;
+  padding: 4px 12px;           /* Small padding */
+  font-size: 14px;             /* Smaller font */
+  border: none;
+  border-radius: 6px;          /* More rounded corners */
+  cursor: pointer;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.send-otp-btn:hover {
+  background-color: #218838;   /* Slightly darker on hover */
 }

@@ -23,6 +23,7 @@ import { SettingsAuthorizedwebsitesComponent } from './settings-authorizedwebsit
 import { Closeaccount2Component } from './closeaccount2/closeaccount2.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { Topbar1Component } from './topbar1/topbar1.component';
+import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -52,7 +53,7 @@ export const routes: Routes = [
   {path:'closeaccount2',component:Closeaccount2Component},
   {path:'topbar',component:TopbarComponent},
     {path:'topbar1', component: Topbar1Component},
-
+{ path: 'verify-otp', component: VerifyOtpComponent },
 
 
 { path: '', redirectTo: '/profile', pathMatch: 'full' },

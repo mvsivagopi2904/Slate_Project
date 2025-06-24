@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -19,16 +19,17 @@ export class ForgotPasswordComponent {
   private fb = inject(FormBuilder);
   forgotPasswordForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    
   });
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   onSubmit(): void {
     if (this.forgotPasswordForm.valid) {
       const email = this.forgotPasswordForm.value.email;
       console.log('Reset password for:', email);
-      // trigger password reset service here
+
+      // Redirect to OTP verification page
+      this.router.navigate(['/verify-otp']);
     }
   }
 }

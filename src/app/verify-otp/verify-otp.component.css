@@ -1,0 +1,72 @@
+.verify-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/assets/background.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.verify-box {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.verify-box h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.verify-box p {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.verify-box input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  background-color: #3f8dfd;
+  color: white;
+}
+
+.actions .back-btn {
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.resend {
+  margin-top: 15px;
+}
+
+.resend a {
+  color: #3f8dfd;
+  text-decoration: none;
+  font-size: 14px;
+}
