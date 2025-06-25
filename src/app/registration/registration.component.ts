@@ -77,6 +77,37 @@ export class RegistrationComponent implements OnInit {
   alert(`OTP sent to ${emailValue}`);
 }
 
+otpSent: boolean = false;
+emailVerified: boolean = false;
+enteredOtp: string = '';
+generatedOtp: string = '';
+
+// Getters already defined for email
+
+sendvOtp() {
+  if (this.email?.invalid) {
+    this.email.markAsTouched();
+    return;
+  }
+
+  this.generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+  this.otpSent = true;
+  console.log('OTP Sent:', this.generatedOtp);
+  alert(`OTP sent to ${this.email?.value}: ${this.generatedOtp}`);
+}
+
+verifyOtp(): void {
+  const enteredOtp = this.registrationForm.get('otp')?.value;
+  if (enteredOtp === this.generatedOtp) {
+    this.emailVerified = true;
+    this.otpSent = false;
+    alert('Email verified successfully!');
+  } else {
+    alert('Invalid OTP. Please try again.');
+  }
+}
+
+
 
 get dob() {
   return this.registrationForm?.get('dob');
@@ -137,6 +168,7 @@ get firstNameErrors() {
         phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
         password: ['', [Validators.required,Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{8,}$/)]],
         confirmPassword: ['', Validators.required,],
+         otp: [''],
       },
       { validators: this.passwordMatchValidator }
     );

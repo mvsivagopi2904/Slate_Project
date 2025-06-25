@@ -155,3 +155,40 @@ form h3 {
 .send-otp-btn:hover {
   background-color: #218838;   /* Slightly darker on hover */
 }
+
+
+.send-otp-btn,
+.verify-otp-btn {
+  margin-top: 8px;
+  padding: 6px 14px;
+  background-color: #007a3d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.send-otp-btn:hover,
+.verify-otp-btn:hover {
+  background-color: #006030;
+}
+
+.otp-verification {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.otp-input {
+  margin-bottom: 6px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.verified-message {
+  color: green;
+  margin-top: 8px;
+  font-weight: bold;
+}
