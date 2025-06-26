@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
   router: any;
 
   get phone() {
-    return this.registrationForm?.get('phone');
+    return this.registrationForm?.get('phoneNumber');
   }
 
   get phoneErrors() {
@@ -110,7 +110,7 @@ verifyOtp(): void {
 
 
 get dob() {
-  return this.registrationForm?.get('dob');
+  return this.registrationForm?.get('dateOfBirth');
 }
 
 get dobErrors() {
@@ -152,7 +152,7 @@ get firstNameErrors() {
       {
         firstName: ['', Validators.required],
         lastName: [''],
-        dob: ['', [Validators.required, minimumAgeValidator(18)]],
+        dateOfBirth: ['', [Validators.required, minimumAgeValidator(18)]],
         gender: ['', Validators.required],
         country: ['', Validators.required],
         state: ['', Validators.required],
@@ -165,7 +165,7 @@ get firstNameErrors() {
             Validators.email
           ]
         ],
-        phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
         password: ['', [Validators.required,Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{8,}$/)]],
         confirmPassword: ['', Validators.required,],
          otp: [''],
