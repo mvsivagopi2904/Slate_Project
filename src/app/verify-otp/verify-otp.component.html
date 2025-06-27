@@ -1,21 +1,22 @@
 <div class="branding-container">
   <div class="branding-left">
-    <img src="assets\logo.PNG" alt="hy logo" class="logo" />
+    <img src="assets/logo.PNG" alt="hy logo" class="logo" />
     <span class="brand-name"></span>
   </div>
+</div>
 
 <div class="verify-container">
   <div class="verify-box">
     <h2>Verify Email Address</h2>
-    <p>OTP has been sent </p>
+    <p>OTP has been sent</p>
 
-    <form>
+    <form (ngSubmit)="onVerifyOtp()">
       <label for="otp">Enter OTP</label>
-      <input type="password" id="otp" placeholder="••••••" />
+      <input type="password" id="otp" placeholder="••••••" [(ngModel)]="otp" name="otp" required />
 
       <div class="actions">
         <button type="submit">Verify</button>
-        <button type="button" class="back-btn">Back</button>
+        <button type="button" class="back-btn" (click)="goBack()">Back</button>
       </div>
 
       <div class="resend">

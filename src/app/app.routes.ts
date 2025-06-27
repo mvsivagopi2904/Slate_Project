@@ -24,7 +24,7 @@ import { Closeaccount2Component } from './closeaccount2/closeaccount2.component'
 import { TopbarComponent } from './topbar/topbar.component';
 import { Topbar1Component } from './topbar1/topbar1.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
-
+import { ResetPasswordComponent } from './resetpassword/resetpassword.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'registration', component: RegistrationComponent },
@@ -55,7 +55,7 @@ export const routes: Routes = [
     {path:'topbar1', component: Topbar1Component},
 { path: 'verify-otp', component: VerifyOtpComponent },
 
-
+{path:'resetpassword',component:ResetPasswordComponent},
 { path: '', redirectTo: '/profile', pathMatch: 'full' },
 
 ];
