@@ -85,15 +85,26 @@ generatedOtp: string = '';
 // Getters already defined for email
 
 sendvOtp() {
-  if (this.email?.invalid) {
-    this.email.markAsTouched();
+  const emailControl = this.registrationForm.get('email');
+  if (!emailControl || emailControl.invalid) {
+    emailControl?.markAsTouched();
     return;
   }
 
-  this.generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-  this.otpSent = true;
-  console.log('OTP Sent:', this.generatedOtp);
-  alert(`OTP sent to ${this.email?.value}: ${this.generatedOtp}`);
+  const emailValue = emailControl.value;
+
+  this.http.post('http://localhost:8080/api/user/send-otp', { email: emailValue }).subscribe({
+    next: (res: any) => {
+      this.generatedOtp = res.otp || Math.floor(100000 + Math.random() * 900000).toString();
+      this.otpSent = true;
+      console.log('OTP Sent:', this.generatedOtp);
+      alert(`OTP sent to ${emailValue}`);
+    },
+    error: (err) => {
+      console.error('Failed to send OTP:', err);
+      alert('Failed to send OTP. Please try again.');
+    }
+  });
 }
 
 verifyOtp(): void {
