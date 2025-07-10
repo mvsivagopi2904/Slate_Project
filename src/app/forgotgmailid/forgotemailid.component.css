@@ -1,68 +1,253 @@
-.forgot-email-container {
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background */
+  color: #333;
+}
+
+/* --- Branding Header (Re-used for consistency) --- */
+.branding-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 5%; /* Responsive padding */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.branding-left {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Space below on smaller screens */
+}
+
+.branding-left .logo {
+  max-height: 40px;
+  margin-right: 10px;
+}
+
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Example: adjust as needed */
+  font-weight: bold;
+  color: #333;
+}
+
+/* If you add any content to branding-right */
+.branding-right {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.branding-right a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.branding-right a:hover {
+  text-decoration: underline;
+}
+
+/* --- Main Forgot Email Wrapper --- */
+.forgot-email-wrapper {
+  min-height: calc(100vh - 60px); /* Adjust based on branding-container height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; /* Padding for small screens */
+}
+
+.forgot-email-container {
+  display: flex;
+  flex-direction: column; /* Stack box and illustration on small screens */
+  gap: 2rem; /* Space between content sections */
+  background-color: #fff;
   padding: 2rem;
-  height: 100vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Max width for the entire section */
+  width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+/* --- Forgot Email Box Styles --- */
+.forgot-email-box {
+  flex-grow: 1; /* Allow box to take available space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally on small screens */
+  text-align: center;
+}
+
+.forgot-email-box h2 {
+  font-size: 1.8rem; /* Responsive font size */
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.forgot-email-box p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  max-width: 350px; /* Limit text width for readability */
+}
+
+.forgot-email-box form {
+  width: 100%; /* Form takes full width of box */
+  max-width: 350px; /* Limit form width */
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 2.5rem; /* Left padding for icon */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.forgot-email-box button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.forgot-email-box button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.forgot-email-box button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* --- Illustration Section --- */
+.illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9ecef; /* Light background for image area */
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 200px; /* Ensure illustration section has some height */
+}
+
+.illustration img {
+  max-width: 100%; /* Image will shrink to fit its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  object-fit: contain;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .branding-container {
+    padding: 1rem 10%; /* More padding on larger screens */
+  }
+
+  .forgot-email-wrapper {
+    padding: 2rem;
+  }
+
+  .forgot-email-container {
+    flex-direction: row; /* Arrange box and illustration side-by-side */
+    padding: 3rem;
+  }
 
   .forgot-email-box {
-    max-width: 400px;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-basis: 50%; /* Forgot email box takes 50% of the width */
+    padding-right: 2rem; /* Add some space between box and illustration */
+    text-align: left; /* Align content left within the box */
+    align-items: flex-start; /* Align content to the left */
+  }
 
-    h2 {
-      color: #007bdb;
-      margin-bottom: 1rem;
-    }
+  .forgot-email-box h2 {
+    font-size: 2.2rem;
+  }
 
-    p {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 1.5rem;
-    }
+  .forgot-email-box p {
+    max-width: none; /* Let it expand naturally */
+  }
 
-    .input-group {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-
-      .icon {
-        margin-right: 0.5rem;
-      }
-
-      input {
-        border: none;
-        outline: none;
-        width: 100%;
-      }
-    }
-
-    button {
-      width: 100%;
-      padding: 0.75rem;
-      background-color: #007bdb;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-
-      &:disabled {
-        background-color: #b3d7f0;
-        cursor: not-allowed;
-      }
-    }
+  .forgot-email-box form {
+    max-width: none; /* Let form expand within its flex basis */
   }
 
   .illustration {
-    img {
-      max-width: 400px;
-      height: auto;
-    }
+    flex-basis: 50%; /* Illustration takes 50% of the width */
+    min-height: auto; /* Reset min-height */
+  }
+}
+
+/* For very small screens (e.g., width <= 480px) */
+@media (max-width: 480px) {
+  .branding-container {
+    padding: 0.8rem 1rem;
+  }
+
+  .forgot-email-container {
+    padding: 1.5rem;
+  }
+
+  .forgot-email-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .forgot-email-box p {
+    font-size: 0.9rem;
+  }
+
+  .input-group input {
+    padding: 0.7rem 0.7rem 0.7rem 2rem; /* Adjust padding for smaller input */
+    font-size: 0.9rem;
+  }
+
+  .input-group .icon {
+    left: 8px; /* Adjust icon position */
+    font-size: 1rem;
+  }
+
+  .forgot-email-box button {
+    padding: 0.7rem;
+    font-size: 1rem;
   }
 }

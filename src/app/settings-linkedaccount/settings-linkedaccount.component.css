@@ -1,85 +1,36 @@
-.settings-container {
-  background-color: #f1f4f9;
-  padding: 30px;
-  font-family: 'Segoe UI', sans-serif;
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.settings-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+body {
+  font-family: Arial, sans-serif; /* Consistent font-family */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
+  color: #333;
 }
 
-.linked-accounts-box {
-  background-color: #e1e5ea;
-  padding: 20px;
-  border-radius: 6px;
-  margin-bottom: 30px;
-}
-
-.linked-accounts-box h3 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-}
-
-.link-account-section h3 {
-  margin-bottom: 20px;
-  font-size: 20px;
-}
-
-.account-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.google { background-color: #fff; color: #000; border: 1px solid #ccc; }
-.microsoft { background-color: #000; }
-.linkedin { background-color: #0077b5; }
-.facebook { background-color: #4267B2; }
-.twitter { background-color: #1da1f2; }
-.apple { background-color: #000; }
-.github { background-color: #24292e; }
-
-.google:hover,
-.microsoft:hover,
-.linkedin:hover,
-.facebook:hover,
-.twitter:hover,
-.apple:hover,
-.github:hover {
-  opacity: 0.9;
-}
-
-.branding-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
-}
-
+/* --- Header Container (Top Bar) --- */
 .branding-left {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.logo {
-  height: 40px;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
   margin-right: 10px;
 }
-.brand-name {
-  font-size: 24px;
+
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
   font-weight: bold;
-  color: #2070c0;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
 .top-right-icons {
   position: absolute;
@@ -107,23 +58,216 @@
     padding: 2px;
   }
 }
-.app-container {
+
+/* --- Main Layout (Sidebar + Main Content) --- */
+.main-layout {
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height below header */
+  background-color: #e9eff5; /* Light background for consistency */
 }
 
+/* --- Sidebar --- */
 .sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
   flex-shrink: 0;
+  background-color: #1e88e5; /* Adjusted to match previous examples */
+  color: white;
+  transition: width 0.3s ease;
 }
 
+/* --- Main Content Area for Linked Accounts --- */
 .main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
+  flex-grow: 1; /* Allows content to take up remaining space */
+  padding: 1.5rem; /* Responsive padding */
+  background-color: #f1f4f9; /* Background color for the content area */
+  overflow-y: auto; /* Allows content to scroll if it overflows */
+}
+
+.settings-container {
+  max-width: 800px; /* Max width for the settings content */
+  width: 100%; /* Take full width on small screens */
+  margin: 0 auto; /* Center the content on larger screens */
+}
+
+.settings-container h2 {
+  font-size: 1.8rem; /* Responsive font size */
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* --- Linked Accounts Box --- */
+.linked-accounts-box {
+  background-color: #e1e5ea;
+  padding: 1.5rem; /* Responsive padding */
+  border-radius: 6px;
+  margin-bottom: 2rem; /* Responsive margin */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.linked-accounts-box h3 {
+  margin: 0 0 0.8rem 0; /* Responsive margin */
+  font-size: 1.25rem; /* Responsive font size */
+  color: #333;
+}
+
+.linked-accounts-box p {
+  font-size: 0.9rem; /* Responsive font size */
+  color: #555;
+  margin-bottom: 0;
+}
+
+.no-linked-accounts {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fb;
+  border-radius: 4px;
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+/* --- Link Account Section --- */
+.link-account-section h3 {
+  margin-bottom: 1.5rem; /* Responsive margin */
+  font-size: 1.4rem; /* Responsive font size */
+  color: #222;
+}
+
+.account-buttons {
+  display: grid; /* Use CSS Grid for a flexible button layout */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+  gap: 0.8rem; /* Responsive gap */
+}
+
+.btn {
+  display: flex; /* Make buttons flex containers for internal content alignment */
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  padding: 0.8rem 1rem; /* Responsive padding */
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none; /* Remove underline for links */
+  font-size: 0.9rem; /* Responsive font size */
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  min-height: 40px; /* Ensure a minimum height for all buttons */
+}
+
+/* Specific button colors */
+.google {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+.microsoft {
+  background-color: #000;
+}
+.linkedin {
+  background-color: #0077b5;
+}
+.facebook {
+  background-color: #4267b2;
+}
+.twitter {
+  background-color: #1da1f2;
+}
+.apple {
+  background-color: #000;
+}
+.github {
+  background-color: #24292e;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding: 2rem 1.5rem; /* Consistent padding */
+  }
+
+  .main-content {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .settings-container h2 {
+    font-size: 2.2rem; /* Larger font size */
+  }
+
+  .linked-accounts-box {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .linked-accounts-box h3 {
+    font-size: 1.5rem; /* Larger font size */
+  }
+
+  .linked-accounts-box p {
+    font-size: 1rem; /* Larger font size */
+  }
+
+  .link-account-section h3 {
+    font-size: 1.6rem; /* Larger font size */
+  }
+
+  .account-buttons {
+    /* Adjust columns for larger screens if desired, e.g., fewer, wider columns */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem; /* Larger gap */
+  }
+
+  .btn {
+    padding: 0.9rem 1.5rem; /* More padding */
+    font-size: 1rem; /* Larger font size */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .main-content {
+    padding: 3rem;
+  }
+
+  .account-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Even wider columns */
+    gap: 1.5rem; /* Even larger gap */
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
 }

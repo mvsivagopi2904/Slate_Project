@@ -66,7 +66,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   sendOtp(): void {
-  const emailControl = this.email;
+   const emailControl = this.email;
   if (!emailControl || emailControl.invalid) {
     emailControl?.markAsTouched();
     return;
@@ -93,7 +93,7 @@ sendvOtp() {
 
   const emailValue = emailControl.value;
 
-  this.http.post('http://localhost:8080/api/user/send-otp', { email: emailValue }).subscribe({
+   this.http.post('http://localhost:8080/api/user/send-otp', { email: emailValue }).subscribe({
     next: (res: any) => {
       this.generatedOtp = res.otp || Math.floor(100000 + Math.random() * 900000).toString();
       this.otpSent = true;

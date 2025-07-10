@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [ReactiveFormsModule,RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, SidebarComponent],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css',
     standalone: true,

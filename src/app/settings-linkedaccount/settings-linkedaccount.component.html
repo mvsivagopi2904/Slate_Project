@@ -1,40 +1,50 @@
-<div class="branding-left">
-  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
-  <span class="brand-name"></span>
-</div>
+<header class="branding-header">
+  <div class="branding-left">
+    <img src="assets/hylogo.PNG" alt="hy logo" class="logo" />
+    
+  </div>
+</header>
 
-<div class="top-right-icons">
-<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
- 
-</button>
- 
-<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
-</button>
-</div>
-
- <div class="app-container">
-  <app-sidebar class="sidebar"></app-sidebar>
-
-<div class="settings-container">
- 
-  <h2>Settings</h2>
-
-  <div class="linked-accounts-box">
-    <h3>Linked Accounts</h3>
-    <p>View and manage the list of accounts that are linked with your HY Slate account.</p>
+  <div class="top-right-icons">
+    <button [routerLink]="'/topbar'">
+      <img src="assets/logout.PNG" alt="Notifications" class="icon" />
+    </button>
+    <button [routerLink]="'/topbar1'">
+      <img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+    </button>
   </div>
 
-  <div class="link-account-section">
-    <h3>Link Your Account</h3>
 
-   <div class="account-buttons">
-      <a href="https://accounts.google.com" target="_blank" class="btn google">Sign in with Google</a>
-      <a href="https://login.microsoftonline.com" target="_blank" class="btn microsoft">Sign in with Microsoft</a>
-      <a href="https://www.linkedin.com/oauth/v2/authorization" target="_blank" class="btn linkedin">Sign in with LinkedIn</a>
-      <a href="https://www.facebook.com/login" target="_blank" class="btn facebook">Sign in with Facebook</a>
-      <a href="https://twitter.com/i/flow/login" target="_blank" class="btn twitter">Sign in with Twitter</a>
-      <a href="https://appleid.apple.com/auth/authorize" target="_blank" class="btn apple">Sign in with Apple</a>
-      <a href="https://github.com/login" target="_blank" class="btn github">Sign in with Github</a>
+<div class="main-layout">
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <div class="main-content">
+    <div class="settings-container">
+      <h2>Settings</h2>
+
+      <div class="linked-accounts-box">
+        <h3>Linked Accounts</h3>
+        <p>View and manage the list of accounts that are linked with your HY Slate account.</p>
+        <div class="no-linked-accounts">
+          <p>No accounts currently linked.</p>
+        </div>
+      </div>
+
+      <div class="link-account-section">
+        <h3>Link Your Account</h3>
+
+        <div class="account-buttons">
+          <a href="https://accounts.google.com" target="_blank" class="btn google">Sign in with Google</a>
+          <a href="https://login.microsoftonline.com" target="_blank" class="btn microsoft">Sign in with Microsoft</a>
+          <a href="https://www.linkedin.com/oauth/v2/authorization" target="_blank" class="btn linkedin"
+            >Sign in with LinkedIn</a
+          >
+          <a href="https://www.facebook.com/login" target="_blank" class="btn facebook">Sign in with Facebook</a>
+          <a href="https://twitter.com/i/flow/login" target="_blank" class="btn twitter">Sign in with Twitter</a>
+          <a href="https://appleid.apple.com/auth/authorize" target="_blank" class="btn apple">Sign in with Apple</a>
+          <a href="https://github.com/login" target="_blank" class="btn github">Sign in with Github</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,73 +1,325 @@
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background */
+  color: #333;
+}
+
+/* --- Branding Header (Re-using from Registration, ensure consistency) --- */
+.branding-container {
+  display: flex;
+  justify-content: space-between; /* If you add a right part */
+  align-items: center;
+  padding: 1rem 5%; /* Responsive padding */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.branding-left {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Space below on smaller screens */
+}
+
+.branding-left .logo {
+  max-height: 40px; /* Keep logo size reasonable */
+  margin-right: 10px;
+}
+
+/* Add if you have a right side to branding-container in login */
+.branding-right {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.branding-right a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.branding-right a:hover {
+  text-decoration: underline;
+}
+
+/* --- Main Login Wrapper --- */
+.login-wrapper {
+  min-height: calc(100vh - 60px); /* Adjust based on branding-container height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; /* Padding for small screens */
+}
+
 .login-container {
   display: flex;
+  flex-direction: column; /* Stack login box and image on small screens */
+  gap: 2rem; /* Space between login box and image */
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px; /* Max width for the entire login section */
+  width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+/* --- Login Box Styles --- */
+.login-box {
+  flex-grow: 1; /* Allow login box to take available space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  text-align: center;
+}
+
+.login-box h2 {
+  font-size: 1.8rem; /* Responsive font size */
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-box form {
+  width: 100%; /* Form takes full width within login-box */
+  max-width: 350px; /* Limit form width */
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 2.5rem; /* Left padding for icon */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.input-group i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.2rem;
+  /* If you're using font icons like Font Awesome, ensure they are linked */
+}
+
+.forgot-links {
+  display: flex;
   justify-content: space-between;
-  padding: 40px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap; /* Allow links to wrap */
+  gap: 0.5rem; /* Space between wrapped links */
+}
+
+.forgot-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-links a:hover {
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.no-account-text {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.no-account-text a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no-account-text a:hover {
+  text-decoration: underline;
+}
+
+/* --- Social Login Section --- */
+.social-login {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+  width: 100%;
+  max-width: 350px; /* Align with form width */
+}
+
+.social-login span {
+  display: block;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.social-icons-wrapper {
+  display: flex;
+  justify-content: center; /* Center icons */
+  gap: 15px; /* Space between icons */
+  flex-wrap: wrap; /* Allow icons to wrap to next line */
+}
+
+.social-icons-wrapper img {
+  width: 40px; /* Fixed size for social icons */
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icons-wrapper img:hover {
+  transform: translateY(-3px);
+}
+
+/* --- Login Image Section --- */
+.login-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9ecef; /* Light background for image area */
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 250px; /* Ensure image section has some height */
+}
+
+.login-image img {
+  max-width: 100%; /* Image will shrink to fit its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  object-fit: contain;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .branding-container {
+    padding: 1rem 10%; /* More padding on larger screens */
+  }
+
+  .login-wrapper {
+    padding: 2rem;
+  }
+
+  .login-container {
+    flex-direction: row; /* Arrange login box and image side-by-side */
+    max-width: 900px; /* Max width for content on larger screens */
+    padding: 3rem;
+  }
 
   .login-box {
-    width: 40%;
-    h2 {
-      color: #0078d4;
-    }
+    flex-basis: 50%; /* Login box takes 50% of the width */
+    padding-right: 2rem; /* Add some space between box and image */
+    text-align: left; /* Align text left within login box */
+    align-items: flex-start; /* Align content left */
+  }
 
-    form {
-      .input-group {
-        display: flex;
-        align-items: center;
-        margin: 10px 0;
+  .login-box h2 {
+    font-size: 2.2rem;
+  }
 
-        i {
-          margin-right: 10px;
-        }
+  .login-box form {
+    max-width: none; /* Let it expand within its flex basis */
+  }
 
-        input {
-          flex: 1;
-          padding: 10px;
-        }
-      }
+  .forgot-links {
+    justify-content: flex-start; /* Align links to the left */
+    gap: 1.5rem; /* More space between links */
+  }
 
-      button {
-        width: 100%;
-        padding: 10px;
-        background-color: #0078d4;
-        color: white;
-        border: none;
-      }
-    }
+  .social-login {
+    max-width: none; /* Let it expand within its flex basis */
+  }
 
-    .forgot-links {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      a {
-        color: #0078d4;
-        text-decoration: none;
-      }
-    }
+  .social-login span {
+    text-align: left; /* Align text left */
+  }
 
-    .social-login {
-      margin-top: 20px;
-      span {
-        display: block;
-        text-align: center;
-      }
-
-      .icons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-
-        img {
-          width: 24px;
-          cursor: pointer;
-        }
-      }
-    }
+  .social-icons-wrapper {
+    justify-content: flex-start; /* Align icons to the left */
   }
 
   .login-image {
-    width: 50%;
-    img {
-      width: 50%;
-    }
+    flex-basis: 50%; /* Image takes 50% of the width */
+    min-height: auto; /* Reset min-height */
+  }
+}
+
+/* For very small screens (e.g., width <= 480px) */
+@media (max-width: 480px) {
+  .branding-container {
+    padding: 0.8rem 1rem;
+  }
+
+  .login-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .input-group input {
+    padding: 0.6rem 0.6rem 0.6rem 2rem; /* Adjust padding for smaller input */
+    font-size: 0.9rem;
+  }
+
+  .input-group i {
+    left: 8px; /* Adjust icon position */
+    font-size: 1rem;
+  }
+
+ .forgot-links {
+  display: flex; /* Ensure it's a flex container */
+  flex-direction: column; /* Keep items stacked vertically (line by line) */
+  align-items: center; /* Align stacked items to the left (start of the cross-axis) */
+  gap: 0.8rem;
+}
+  .login-btn {
+    padding: 0.7rem;
+    font-size: 1rem;
+  }
+
+  .social-icons-wrapper {
+    gap: 10px; /* Reduce gap between social icons */
+  }
+
+  .social-icons-wrapper img {
+    width: 35px; /* Slightly smaller icons */
+    height: 35px;
   }
 }

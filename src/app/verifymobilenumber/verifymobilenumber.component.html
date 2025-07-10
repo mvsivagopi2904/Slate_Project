@@ -1,20 +1,23 @@
-<div class="branding-left">
-  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
-  <span class="brand-name"></span>
-</div>
+<header class="branding-header">
+  <div class="branding-left">
+    <img src="assets/hylogo.PNG" alt="hy logo" class="logo" />
+    
+  </div>
+</header>
 
-<div class="top-right-icons">
-<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
- 
-</button>
- 
-<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
-</button>
-</div>
+  <div class="top-right-icons">
+    <button [routerLink]="'/topbar'">
+      <img src="assets/logout.PNG" alt="Notifications" class="icon" />
+    </button>
+    <button [routerLink]="'/topbar1'">
+      <img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+    </button>
+  </div>
 
-<div class="app-container">
+
+<div class="main-layout">
   <app-sidebar class="sidebar"></app-sidebar>
-
+ 
   <div class="overlay">
     <div class="modal">
       <div class="modal-header">
@@ -23,7 +26,7 @@
       </div>
 
       <div class="modal-body">
-        <p>OTP sent to +91 7******8</p>
+        <p class="otp-info">OTP sent </p>
 
         <form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
           <label for="otp">Enter OTP</label>
@@ -33,18 +36,35 @@
             maxlength="6"
             formControlName="otp"
             placeholder="Enter 6-digit OTP"
-            [class.invalid]="otpForm.controls.otp.invalid && otpForm.controls.otp.touched"
+            [class.invalid]="
+              otpForm.controls.otp.invalid && otpForm.controls.otp.touched
+            "
           />
 
-          <div *ngIf="otpForm.controls.otp.invalid && otpForm.controls.otp.touched" class="error">
+          <div
+            *ngIf="
+              otpForm.controls.otp.invalid && otpForm.controls.otp.touched
+            "
+            class="error"
+          >
             Please enter a valid 6-digit OTP.
           </div>
 
-          <a href="#" class="resend" (click)="resendOtp()">Resend OTP</a>
+          <a href="#" class="resend-otp-link" (click)="resendOtp()"
+            >Resend OTP</a
+          >
 
           <div class="button-group">
-            <button type="submit" class="verify-btn" [disabled]="otpForm.invalid">Verify</button>
-            <button type="button" class="back-btn" (click)="goBack()">Back</button>
+            <button
+              type="submit"
+              class="verify-btn"
+              [disabled]="otpForm.invalid"
+            >
+              Verify
+            </button>
+            <button type="button" class="back-btn" (click)="goBack()">
+              Back
+            </button>
           </div>
         </form>
       </div>

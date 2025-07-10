@@ -1,76 +1,36 @@
-.device-container {
-  padding: 20px;
-  background-color: #e6ecf1;
-  height: 100vh;
-}
-
-.device-box {
-  background-color: #f8f9fb;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.device-header {
-  background-color: #d6d6d6;
-  padding: 16px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  margin-bottom: 16px;
-}
-
-.device-header h3 {
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
-.device-entry {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 16px;
-  border-radius: 8px;
-  gap: 16px;
-  font-size: 16px;
-}
-
-.avatar {
-  background-color: #2c7db5;
-  color: white;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.device-name {
-  font-weight: 500;
-}
-
-.device-location {
-  margin-left: auto;
+body {
+  font-family: Arial, sans-serif; /* Consistent font-family */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
   color: #333;
 }
-.app-container {
+
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
-  flex-shrink: 0;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
 .top-right-icons {
   position: absolute;
@@ -98,25 +58,218 @@
     padding: 2px;
   }
 }
-.branding-container {
+
+/* --- Main Layout (Sidebar + Device Content) --- */
+.main-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height below header */
+  background-color: #e9eff5; /* Light background for consistency */
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
+/* --- Sidebar --- */
+.sidebar {
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #1e88e5; /* Adjusted to match previous examples */
+  color: white;
+  transition: width 0.3s ease;
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+/* --- Device Container (Main Content Area) --- */
+.device-container {
+  flex-grow: 1; /* Allows it to take up remaining space */
+  padding: 1.5rem; /* Responsive padding */
+  background-color: #e6ecf1; /* Background color for the content area */
+  overflow-y: auto; /* Allows content to scroll if it overflows */
 }
-.brand-name {
-  font-size: 24px;
+
+.device-container h2 {
+  font-size: 1.8rem; /* Responsive font size */
   font-weight: bold;
-  color: #2070c0;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* --- Device Box --- */
+.device-box {
+  background-color: #f8f9fb;
+  padding: 1.5rem; /* Responsive padding */
+  border-radius: 10px;
+  max-width: 700px; /* Max width for larger screens */
+  width: 100%; /* Take full width on small screens */
+  margin: 0 auto; /* Center the box on larger screens */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.device-header {
+  background-color: #d6d6d6;
+  padding: 1rem; /* Responsive padding (16px converted) */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin-bottom: 1rem; /* Responsive margin (16px converted) */
+}
+
+.device-header h3 {
+  margin: 0;
+  font-size: 1.25rem; /* Responsive font size */
+  color: #333;
+}
+
+.device-header p {
+  font-size: 0.9rem; /* Responsive font size */
+  color: #555;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* --- Device Entry (Individual Device) --- */
+.device-entry {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 1rem; /* Responsive padding (16px converted) */
+  border-radius: 8px;
+  gap: 1rem; /* Responsive gap (16px converted) */
+  font-size: 1rem; /* Base font size */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow for entries */
+  margin-bottom: 0.8rem; /* Space between entries */
+  transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.device-entry:last-child {
+  margin-bottom: 0; /* No margin after the last entry */
+}
+
+.device-entry:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.avatar {
+  background-color: #2c7db5;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 44px; /* Slightly larger avatar */
+  height: 44px; /* Slightly larger avatar */
+  min-width: 44px; /* Ensure it doesn't shrink */
+  min-height: 44px; /* Ensure it doesn't shrink */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem; /* Responsive font size for initials */
+}
+
+.device-info {
+  flex-grow: 1; /* Allows device info to take available space */
+  display: flex;
+  flex-direction: column; /* Stack name and location vertically on smaller screens */
+}
+
+.device-name {
+  font-weight: 600; /* Bolder font for name */
+  font-size: 1.05rem; /* Slightly larger name font */
+  color: #222;
+}
+
+.device-location {
+  font-size: 0.85rem; /* Smaller font for location */
+  color: #666;
+  margin-top: 0.2rem; /* Small space below name */
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding: 2rem 1.5rem; /* Consistent padding */
+  }
+
+  .device-container {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .device-container h2 {
+    font-size: 2rem; /* Larger font size */
+  }
+
+  .device-box {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .device-header h3 {
+    font-size: 1.5rem; /* Larger font size */
+  }
+
+  .device-header p {
+    font-size: 1rem; /* Larger font size */
+  }
+
+  .device-entry {
+    flex-direction: row; /* Ensure elements are in a row */
+    justify-content: space-between; /* Space out name/location */
+    align-items: center; /* Vertically align items */
+    padding: 1.2rem 1.5rem; /* More padding for desktop */
+  }
+
+  .device-info {
+    flex-direction: row; /* Place name and location side-by-side */
+    justify-content: space-between; /* Space them out */
+    align-items: center; /* Vertically align */
+    flex-grow: 1; /* Allow info to grow */
+    margin-right: 1rem; /* Space before potential right-aligned content */
+  }
+
+  .device-location {
+    margin-top: 0; /* Remove top margin when in a row */
+    margin-left: 1rem; /* Add space between name and location */
+    text-align: right; /* Align location to the right */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .device-container {
+    padding: 3rem;
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
+
+  .device-info {
+    flex-direction: column; /* Stack name and location vertically on small screens */
+    align-items: flex-start; /* Align text to the left */
+  }
+  .device-location {
+    text-align: left; /* Align location to left */
+    margin-left: 0; /* Remove left margin */
+  }
 }

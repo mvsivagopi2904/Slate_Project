@@ -1,131 +1,36 @@
-.email-verification-container {
-  flex-grow: 1;
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #e9eef3;
-  min-height: 100vh;
-
-  h2 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.modal-box {
-  position: fixed; /* Center relative to screen */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 380px;
-  z-index: 2000; /* Ensure it's above everything */
+body {
+  font-family: 'Segoe UI', sans-serif; /* Your specified font */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
+  color: #333;
 }
-.modal-header {
-  background-color: #d9d9d9;
-  padding: 1rem;
+
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .close-button {
-    background: #333;
-    color: #fff;
-    border: none;
-    font-size: 20px;
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    border-radius: 2px;
-  }
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.modal-content {
-  padding: 1.5rem;
-
-  p {
-    margin: 0 0 1rem;
-    font-size: 14px;
-  }
-
-  label {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-
-  .otp-input {
-    width: 100%;
-    padding: 0.4rem 0.6rem;
-    font-size: 16px;
-    border: 1px solid #a9bccb;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-  }
-
-  .resend-link {
-    display: inline-block;
-    font-size: 13px;
-    color: #0066cc;
-    text-decoration: underline;
-    margin: 4px 0 12px;
-    cursor: pointer;
-  }
-
-  .button-group {
-    display: flex;
-    gap: 0.5rem;
-
-    .verify-btn {
-      background-color: #5c94b8;
-      border: none;
-      color: white;
-      padding: 0.4rem 1.2rem;
-      font-size: 14px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    .back-btn {
-      background-color: #e6e6e6;
-      border: none;
-      color: #333;
-      padding: 0.4rem 1.2rem;
-      font-size: 14px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-  }
-}
-.app-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
-  flex-shrink: 0;
-}
-
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
 .top-right-icons {
   position: absolute;
@@ -153,25 +58,273 @@
     padding: 2px;
   }
 }
-.branding-container {
+
+/* --- Main Layout (Sidebar + Page Content) --- */
+.main-layout {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height */
+  background-color: #e9eef3; /* Your specified background */
+  overflow: hidden; /* Prevent content overflow issues */
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #1e88e5;
+  color: white;
+  transition: width 0.3s ease; /* Smooth transition for opening/closing */
+}
+
+/* --- Email Verification Container (Main Content Area) --- */
+.email-verification-container {
+  flex-grow: 1; /* Takes up all available space next to sidebar */
+  padding: 1.5rem; /* Initial responsive padding for mobile (2rem was a bit large) */
+  /* min-height: 100vh; -- Removed, as main-layout handles the height */
+  overflow-y: auto; /* Enable scrolling if content overflows vertically */
+
+  h2 {
+    font-size: 1.375rem; /* Responsive font size (22px converted to rem) */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center; /* Center the heading for the verification view */
+  }
+}
+
+/* --- Modal Box (The Verification Pop-up itself) --- */
+.modal-box {
+  /* No longer fixed position if it's part of the flow, but centered within its container */
+  /* If it's a true overlay/pop-up that covers other content, use `position: fixed`
+     and `display: flex; align-items: center; justify-content: center;` on an
+     overlay parent instead of `position: fixed` directly on modal-box.
+     For this example, I'll keep your `position: fixed` and make it responsive. */
+
+  position: fixed; /* Keeps it in viewport even if background scrolls */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering trick */
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 90%; /* Take up 90% of screen width on small devices */
+  max-width: 380px; /* Max width as per your design */
+  z-index: 2000; /* Ensure it's above other content */
+  margin: 1rem; /* Add some margin for very small screens */
+}
+
+.modal-header {
+  background-color: #d9d9d9;
+  padding: 0.8rem 1rem; /* Responsive padding (1rem was fine, but slightly adjusted) */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc; /* Add a subtle border */
+
+  h3 {
+    margin: 0;
+    font-size: 1.125rem; /* Responsive font size (18px converted to rem) */
+    font-weight: 600;
+    color: #333;
+  }
+
+  .close-button {
+    background: #333;
+    color: #fff;
+    border: none;
+    font-size: 1.25rem; /* Responsive font size (20px converted to rem) */
+    width: 1.75rem; /* Responsive width (28px converted to rem) */
+    height: 1.75rem; /* Responsive height */
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex; /* Use flex to center the 'x' */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .close-button:hover {
+    background-color: #555;
+  }
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
+.modal-content {
+  padding: 1.25rem 1.5rem; /* Responsive padding (adjusted 1.5rem) */
+
+  p {
+    margin: 0 0 1rem;
+    font-size: 0.875rem; /* Responsive font size (14px converted to rem) */
+    color: #555;
+  }
+
+  label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9375rem; /* Slightly larger label font */
+  }
+
+  .otp-input {
+    width: 100%;
+    padding: 0.6rem 0.8rem; /* Responsive padding (0.4rem 0.6rem was a bit small) */
+    font-size: 1rem; /* Responsive font size (16px converted to rem) */
+    border: 1px solid #a9bccb;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    text-align: center; /* Center placeholder for OTP */
+    letter-spacing: 0.15rem; /* Add some spacing for OTP digits */
+  }
+
+  .otp-input:focus {
+    border-color: #5c94b8;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(92, 148, 184, 0.2);
+  }
+
+  .resend-link {
+    display: inline-block;
+    font-size: 0.8125rem; /* Responsive font size (13px converted to rem) */
+    color: #0066cc;
+    text-decoration: underline;
+    margin: 0.25rem 0 0.75rem; /* Responsive margin (4px 0 12px) */
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .resend-link:hover {
+    color: #004080;
+  }
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap if space is too small */
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 0.5rem; /* Responsive gap */
+    margin-top: 1rem; /* Space from above elements */
+
+    .verify-btn,
+    .back-btn {
+      border: none;
+      color: white;
+      padding: 0.6rem 1.2rem; /* Responsive padding (0.4rem was a bit small) */
+      font-size: 0.875rem; /* Responsive font size (14px converted to rem) */
+      border-radius: 3px;
+      cursor: pointer;
+      flex-grow: 1; /* Allow buttons to grow to fill space */
+      max-width: 150px; /* Limit max width for buttons */
+      transition: background-color 0.2s ease;
+    }
+
+    .verify-btn {
+      background-color: #5c94b8;
+      color: white;
+    }
+
+    .verify-btn:hover {
+      background-color: #4a7a9a;
+    }
+
+    .back-btn {
+      background-color: #e6e6e6;
+      color: #333;
+    }
+
+    .back-btn:hover {
+      background-color: #d9d9d9;
+    }
+  }
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding-top: 2rem; /* Add top padding to sidebar */
+  }
+
+  .email-verification-container {
+    padding: 2.5rem; /* More padding on larger screens */
+
+    h2 {
+      font-size: 1.5rem;
+      text-align: left; /* Align heading to left on desktop */
+      margin-bottom: 2rem;
+    }
+  }
+
+  .modal-box {
+    width: 380px; /* Explicitly set to max-width on desktop */
+  }
+
+  .modal-header {
+    padding: 1rem 1.5rem; /* Slightly more padding */
+  }
+
+  .modal-content {
+    padding: 1.5rem 2rem; /* Slightly more padding */
+  }
+
+  .modal-content .button-group {
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 1rem; /* More space between buttons */
+  }
+
+  .modal-content .button-group .verify-btn,
+  .modal-content .button-group .back-btn {
+    flex-grow: 0; /* Don't grow, use defined width */
+    width: auto; /* Or specific pixel width like 80px if preferred */
+    padding: 0.6rem 1.5rem; /* Adjust padding */
+  }
 }
-.brand-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2070c0;
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .email-verification-container {
+    padding: 3rem;
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
+}
+
+/* Adjust button group for very small screens if needed */
+@media (max-width: 320px) {
+  .modal-content .button-group {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .modal-content .button-group .verify-btn,
+  .modal-content .button-group .back-btn {
+    max-width: 100%; /* Ensure full width when stacked */
+    padding: 0.8rem 1.2rem;
+  }
 }

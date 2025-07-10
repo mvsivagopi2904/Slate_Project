@@ -1,76 +1,38 @@
-.container {
-  padding: 2rem;
-  background-color: #e9eff5;
-  height: 100vh;
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.email-section {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 700px;
-  margin: auto;
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
+  color: #333;
 }
 
-.email-box {
-  background-color: #dedede;
-  padding: 1rem 1.5rem;
-  margin-bottom: 2rem;
-  border-radius: 8px;
-
-  h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-    color: #333;
-  }
-}
-
-.add-email {
-  text-align: center;
-
-  button {
-    background: none;
-    border: none;
-    color: green;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-
-    .plus {
-      font-size: 1.3rem;
-      margin-right: 5px;
-    }
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.app-container {
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
-  flex-shrink: 0;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
+
 .top-right-icons {
   position: absolute;
   top: 12px;
@@ -97,36 +59,233 @@
     padding: 2px;
   }
 }
-.branding-container {
+
+/* --- Main Layout (Sidebar + Email Content) --- */
+.main-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  /* Calculate height: full viewport height minus the header's height */
+  min-height: calc(100vh - 60px);
+  background-color: #e9eff5; /* Your provided container background */
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
+/* --- Sidebar --- */
+/* Assuming app-sidebar component handles its own internal responsiveness.
+   Here we only manage its behavior within the main-layout. */
+.sidebar {
+  /* Default (Mobile): Sidebar is typically hidden or collapsed on small screens */
+  width: 0;
+  overflow: hidden; /* Hide content when collapsed */
+  flex-shrink: 0; /* Prevent it from shrinking more than 0 */
+  background-color: #1e88e5; /* Your provided sidebar background */
+  color: white;
+  transition: width 0.3s ease; /* Smooth transition for opening/closing */
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+/* --- Email Page Content Area --- */
+.email-page-content {
+  flex-grow: 1; /* Email content takes up remaining space */
+  padding: 1.5rem; /* Initial padding for mobile */
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  /* This effectively replaces your original .profile-content and .main-content */
 }
-.brand-name {
-  font-size: 24px;
+
+.email-page-content h2 {
+  font-size: 1.8rem; /* Responsive font size (was 1.5rem) */
   font-weight: bold;
-  color: #2070c0;
+  margin-bottom: 1.5rem;
+  color: #212529; /* Darker text for headings */
 }
 
-  .profile-content {
-    flex: 1;
-    padding: 2rem;
+/* --- Email Section Wrapper (Card-like container for email content) --- */
+.email-section-wrapper {
+  background-color: #fff; /* Your provided background */
+  border-radius: 10px; /* Your provided border-radius */
+  padding: 1.5rem; /* Responsive padding (was 2rem, adjusted for mobile) */
+  max-width: 700px; /* Your provided max-width */
+  margin: 0 auto; /* Center the card horizontally */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+}
 
-    h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
+/* --- Email Box (Intro text) --- */
+.email-box {
+  background-color: #dedede; /* Your provided background */
+  padding: 1rem 1.25rem; /* Responsive padding (adjusted 1.5rem to 1.25rem for mobile) */
+  margin-bottom: 1.5rem; /* Responsive margin (was 2rem) */
+  border-radius: 8px; /* Your provided border-radius */
+}
+
+.email-box h3 {
+  font-size: 1.1rem; /* Responsive font size (was 1.2rem) */
+  margin-bottom: 0.5rem;
+  color: #343a40; /* Darker text for consistency */
+}
+
+.email-box p {
+  font-size: 0.9rem; /* Responsive font size (was 0.95rem) */
+  color: #333;
+  line-height: 1.5;
+}
+
+/* --- Add Email Button Section --- */
+.add-email {
+  text-align: center;
+  margin-top: 1.5rem; /* Added margin-top for spacing */
+}
+
+.add-email button {
+  background: none;
+  border: none;
+  color: #28a745; /* Your provided green color, can adjust for consistency */
+  font-weight: bold;
+  font-size: 1rem; /* Responsive font size (was 1.1rem) */
+  cursor: pointer;
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  gap: 0.3125rem; /* Space between plus and text (5px converted to rem) */
+  transition: text-decoration 0.2s ease;
+  padding: 0.5rem 1rem; /* Added padding to make button area clickable */
+  border-radius: 5px; /* Added border-radius for softer look */
+}
+
+.add-email button .plus {
+  font-size: 1.2rem; /* Responsive font size (was 1.3rem) */
+  line-height: 1; /* Align vertically */
+}
+
+.add-email button:hover {
+  text-decoration: underline;
+  background-color: rgba(40, 167, 69, 0.1); /* Subtle hover background */
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
   }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding-top: 2.5rem; /* More padding on desktop */
+  }
+
+  .email-page-content {
+    padding: 2.5rem; /* More padding on larger screens */
+  }
+
+  .email-page-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .email-section-wrapper {
+    padding: 2rem; /* More internal padding */
+  }
+
+  .email-box {
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .email-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .email-box p {
+    font-size: 0.95rem;
+  }
+
+  .add-email button {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .add-email button .plus {
+    font-size: 1.3rem;
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .email-page-content {
+    padding: 3rem;
+  }
+  .email-page-content h2 {
+    font-size: 2.5rem;
+  }
+  .email-section-wrapper {
+    padding: 2.5rem;
+  }
+}
+
+/* For very small mobile devices (e.g., width <= 400px) */
+@media (max-width: 400px) {
+  .header-container {
+    padding: 0.7rem 0.8rem;
+  }
+  .branding-left .logo {
+    max-height: 32px;
+  }
+  .branding-left .brand-name {
+    font-size: 1.2rem;
+  }
+  .top-right-icons {
+    gap: 0.8rem;
+  }
+  .top-right-icons .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .email-page-content {
+    padding: 1rem;
+  }
+  .email-page-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .email-section-wrapper {
+    padding: 1rem;
+  }
+  .email-box {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .email-box h3 {
+    font-size: 1rem;
+  }
+  .email-box p {
+    font-size: 0.8rem;
+  }
+  .add-email button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    gap: 0.25rem;
+  }
+  .add-email button .plus {
+    font-size: 1rem;
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
+}

@@ -3,25 +3,41 @@
     <img src="assets/logo.PNG" alt="hy logo" class="logo" />
     <span class="brand-name"></span>
   </div>
+  <div class="branding-right">
+    </div>
 </div>
 
-<div class="verify-container">
-  <div class="verify-box">
-    <h2>Verify Email Address</h2>
-    <p>OTP has been sent</p>
+<div class="verify-wrapper">
+  <div class="verify-container">
+    <div class="verify-box">
+      <h2>Verify Email Address</h2>
+      <p>OTP has been sent</p>
 
-    <form (ngSubmit)="onVerifyOtp()">
-      <label for="otp">Enter OTP</label>
-      <input type="password" id="otp" placeholder="••••••" [(ngModel)]="otp" name="otp" required />
+      <form (ngSubmit)="onVerifyOtp()">
+        <div class="form-group">
+          <label for="otp">Enter OTP</label>
+          <input
+            type="password"
+            id="otp"
+            placeholder="••••••"
+            [(ngModel)]="otp"
+            name="otp"
+            required
+            maxlength="6"
+          />
+        </div>
 
-      <div class="actions">
-        <button type="submit">Verify</button>
-        <button type="button" class="back-btn" (click)="goBack()">Back</button>
-      </div>
+        <div class="actions">
+          <button type="submit" class="verify-btn">Verify</button>
+          <button type="button" class="back-btn" (click)="goBack()">
+            Back
+          </button>
+        </div>
 
-      <div class="resend">
-        <a href="#">Resend OTP</a>
-      </div>
-    </form>
+        <div class="resend">
+          <a href="#">Resend OTP</a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

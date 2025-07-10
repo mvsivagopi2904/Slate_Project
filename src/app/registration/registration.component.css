@@ -1,83 +1,109 @@
-/* Branding Header */
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background */
+  color: #333;
+}
+
+/* --- Branding Header --- */
 .branding-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem 5%; /* Responsive padding */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 .branding-left {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem; /* Space below on smaller screens */
 }
 
-.logo {
-  height: 40px;
+.branding-left .logo {
+  max-height: 40px; /* Keep logo size reasonable */
   margin-right: 10px;
 }
 
-.brand-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2070c0;
-}
-
 .branding-right {
-  font-size: 14px;
+  font-size: 0.9rem;
+  white-space: nowrap; /* Keep "Already a member? Login" on one line if possible */
 }
 
 .branding-right a {
-  color: #2070c0;
-  margin-left: 5px;
+  color: #007bff;
   text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
-/* Centered Heading */
+.branding-right a:hover {
+  text-decoration: underline;
+}
+
+/* --- Centered Heading --- */
 .registration-heading {
   text-align: center;
-  margin: 20px 0;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
 }
 
 .registration-heading h2 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 4px;
+  font-size: 2rem; /* Responsive font size */
+  margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .registration-heading p {
-  font-size: 16px;
-  color: #555;
+  font-size: 1rem;
+  color: #666;
 }
 
-/* Form & Layout */
+/* --- Form Section Container --- */
 .container {
-  display: flex;
-  justify-content: space-between;
-  padding: 40px 32px;
-  font-family: Arial, sans-serif;
+  max-width: 1200px; /* Max width for content on very large screens */
+  margin: 2rem auto; /* Center the container */
+  padding: 1rem;
 }
 
 .form-section {
   display: flex;
-  width: 100%;
-
-  form {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    margin-right: 20px;
-    width: 67%;
-  }
+  flex-direction: column; /* Default to column for mobile-first */
+  gap: 2rem; /* Space between form and image */
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-form h3 {
-  color: #0066cc;
-  margin-bottom: 20px;
+
+/* --- Form Styles --- */
+.form-section form {
+  flex-grow: 1; /* Allow form to take available space */
+}
+
+.form-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr; /* Single column on small screens */
+  gap: 1.5rem; /* Space between form groups */
 }
 
 .form-group {
@@ -86,109 +112,239 @@ form h3 {
 }
 
 .form-group label {
-  margin-bottom: 6px;
-  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.95rem;
 }
 
 .form-group input,
 .form-group select {
-  padding: 8px;
-  border: 1px solid #ccc;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 1rem;
+  width: 100%; /* Full width within its grid column */
+  appearance: none; /* Remove default select arrow */
+  background-color: #fff;
 }
 
-.button-row {
-  margin-top: 30px;
-  display: flex;
-  gap: 10px;
- 
-}
-
-.register-btn {
-  background-color: #0066cc;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+.form-group select {
   cursor: pointer;
 }
 
-.cancel-btn {
-  background-color: #f0f5f1;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-/* Illustration Image */
-.image-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image-section img {
-  max-width: 300px;
+.form-group input.invalid {
+  border-color: #dc3545; /* Red border for invalid fields */
 }
 
 .error {
-  span {
-    color: red;
-  }
-}
-.send-otp-btn {
-  background-color: #28a745;   /* Bright green */
-  color: white;
-  padding: 4px 12px;           /* Small padding */
-  font-size: 14px;             /* Smaller font */
-  border: none;
-  border-radius: 6px;          /* More rounded corners */
-  cursor: pointer;
-  display: inline-block;
-  width: auto;
-  height: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
 }
 
-.send-otp-btn:hover {
-  background-color: #218838;   /* Slightly darker on hover */
-}
-
-
+/* OTP specific styles */
 .send-otp-btn,
 .verify-otp-btn {
-  margin-top: 8px;
-  padding: 6px 14px;
-  background-color: #007a3d;
+  background-color: #28a745; /* Green for OTP buttons */
   color: white;
   border: none;
-  border-radius: 6px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  width: auto; /* Auto width to fit content */
+  align-self: flex-start; /* Align to the start of the flex container */
 }
 
 .send-otp-btn:hover,
 .verify-otp-btn:hover {
-  background-color: #006030;
+  background-color: #218838;
 }
 
 .otp-verification {
   display: flex;
-  flex-direction: column;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 0.5rem;
+  flex-wrap: wrap; /* Allow wrapping for small screens */
 }
 
 .otp-input {
-  margin-bottom: 6px;
-  padding: 6px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  flex-grow: 1; /* Allow OTP input to grow */
+  max-width: 200px; /* Limit max width for OTP input */
 }
 
 .verified-message {
-  color: green;
-  margin-top: 8px;
+  color: #28a745;
   font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* --- Buttons --- */
+.button-row {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.register-btn,
+.cancel-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+/* --- Image Section --- */
+.image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Ensure image section has some height on small screens */
+  background-color: #e9ecef; /* Light background for image area */
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.image-section img {
+  max-width: 100%; /* Image will shrink to fit its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  object-fit: contain; /* Ensure image is fully visible */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .branding-left {
+    margin-bottom: 0; /* No margin on larger screens */
+  }
+
+  .registration-heading h2 {
+    font-size: 2.5rem;
+  }
+
+  .form-section {
+    flex-direction: row; /* Arrange form and image side-by-side */
+  }
+
+  .form-section form {
+    flex-basis: 60%; /* Form takes up 60% of width */
+    max-width: 60%;
+  }
+
+  .image-section {
+    flex-basis: 40%; /* Image takes up 40% of width */
+    max-width: 40%;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for form fields */
+  }
+
+  .button-row {
+    justify-content: flex-end; /* Align buttons to the right on larger screens */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .branding-container {
+    padding: 1rem 10%; /* More padding on larger screens */
+  }
+
+  .container {
+    padding: 2rem; /* More internal padding */
+  }
+
+  .form-section {
+    padding: 3rem;
+  }
+}
+
+/* Adjust font sizes for very small screens if needed */
+@media (max-width: 480px) {
+  .branding-container {
+    padding: 0.8rem 1rem;
+    flex-direction: column; /* Stack branding elements */
+    align-items: flex-start;
+  }
+
+  .branding-right {
+    margin-top: 0.5rem;
+  }
+
+  .registration-heading h2 {
+    font-size: 1.8rem;
+  }
+
+  .registration-heading p {
+    font-size: 0.9rem;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .send-otp-btn,
+  .verify-otp-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .otp-verification {
+    flex-direction: column; /* Stack OTP input and button */
+  }
+
+  .button-row {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .register-btn,
+  .cancel-btn {
+    width: 100%; /* Full width buttons */
+  }
 }

@@ -1,65 +1,38 @@
-.container {
-  background: #e7ecf1;
-  padding: 40px 30px;
-  font-family: 'Segoe UI', sans-serif;
-  color: #222;
-  min-height: 100vh;
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.section {
-  background: #d9d9d9;
-  padding: 170px;
-  border-radius: 6px 6px 0 0;
-}
-
-.section h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.description {
-  font-size: 14px;
+body {
+  font-family: Arial, sans-serif; /* Consistent font-family */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
   color: #333;
 }
 
-.content-box {
-  background: #f2f4f7;
-  border-radius: 0 0 8px 8px;
-  padding: 40px;
-  text-align: center;
-}
-
-.empty-message {
-  color: #222;
-  font-size: 15px;
-}
-.app-container {
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  align-items: center;
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
-  flex-shrink: 0;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
+
 .top-right-icons {
   position: absolute;
   top: 12px;
@@ -86,25 +59,217 @@ h2 {
     padding: 2px;
   }
 }
-.branding-container {
+
+/* --- Main Layout (Sidebar + Main Content) --- */
+.main-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height below header */
+  background-color: #e9eff5; /* Light background for consistency */
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
+/* --- Sidebar --- */
+.sidebar {
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #1e88e5; /* Adjusted to match previous examples */
+  color: white;
+  transition: width 0.3s ease;
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+/* --- Main Content Area for Authorized Websites --- */
+.main-content {
+  flex-grow: 1; /* Allows content to take up remaining space */
+  padding: 1.5rem; /* Responsive padding */
+  background-color: #e7ecf1; /* Background color for the content area */
+  overflow-y: auto; /* Allows content to scroll if it overflows */
 }
-.brand-name {
-  font-size: 24px;
+
+.main-content h2 {
+  font-size: 1.8rem; /* Responsive font size */
   font-weight: bold;
-  color: #2070c0;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.container {
+  max-width: 800px; /* Max width for the settings content */
+  width: 100%; /* Take full width on small screens */
+  margin: 0 auto; /* Center the content on larger screens */
+}
+
+/* --- Section (Header part of the box) --- */
+.section {
+  background: #d9d9d9;
+  padding: 1.5rem; /* Adjusted to a reasonable responsive padding */
+  border-radius: 6px 6px 0 0;
+}
+
+.section h3 {
+  font-size: 1.25rem; /* Responsive font size */
+  font-weight: bold;
+  margin-bottom: 0.4rem; /* Responsive margin */
+  color: #333;
+}
+
+.description {
+  font-size: 0.9rem; /* Responsive font size */
+  color: #333;
+  margin-bottom: 0; /* Remove default paragraph margin if any */
+}
+
+/* --- Content Box (where websites would be listed) --- */
+.content-box {
+  background: #f2f4f7;
+  border-radius: 0 0 8px 8px;
+  padding: 2rem; /* Responsive padding */
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
+}
+
+.empty-message {
+  color: #222;
+  font-size: 1rem; /* Responsive font size */
+  padding: 1rem 0; /* Add some vertical padding for emphasis */
+}
+
+/* --- Styles for individual website entries (if you add them later) --- */
+.website-entry {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.website-icon {
+  background-color: #2c7db5;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.website-details {
+  flex-grow: 1;
+  text-align: left; /* Align text left within details */
+}
+
+.website-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #222;
+  margin-bottom: 0.2rem;
+}
+
+.website-permissions,
+.website-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.revoke-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.revoke-btn:hover {
+  background-color: #c82333;
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding: 2rem 1.5rem; /* Consistent padding */
+  }
+
+  .main-content {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .main-content h2 {
+    font-size: 2.2rem; /* Larger font size */
+  }
+
+  .section {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .section h3 {
+    font-size: 1.4rem; /* Larger font size */
+  }
+
+  .description {
+    font-size: 1rem; /* Larger font size */
+  }
+
+  .content-box {
+    padding: 3rem; /* More generous padding */
+  }
+
+  .empty-message {
+    font-size: 1.1rem; /* Larger font size */
+  }
+
+  /* Adjustments for website entries on desktop */
+  .website-entry {
+    justify-content: space-between; /* Spread out content */
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .main-content {
+    padding: 3rem;
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
 }

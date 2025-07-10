@@ -1,59 +1,97 @@
-.profile-dropdown {
-  width: 320px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* This ensures the dropdown is centered for demonstration, not part of the component itself */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
   font-family: Arial, sans-serif;
+  padding: 1rem; /* Add padding to body for small screens */
+}
+
+.profile-dropdown {
+  width: 100%; /* Take full width on small screens */
+  max-width: 320px; /* Limit max width for larger screens */
+  background: #fff;
+  border-radius: 0.625rem; /* 10px converted to rem */
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* 10px converted to rem */
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Ensures border-radius applies correctly */
 }
 
 .profile-header {
   background: #d6f0f0;
-  padding: 20px;
+  padding: 1.25rem; /* 20px converted to rem */
   text-align: center;
-  position: relative;
+  position: relative; /* For tooltip positioning */
 }
 
 .avatar {
-  width: 70px;
-  height: 70px;
+  width: 4.375rem; /* 70px converted to rem */
+  height: 4.375rem; /* 70px converted to rem */
   margin: 0 auto;
   border-radius: 50%;
-  border: 2px solid #000;
+  border: 0.125rem solid #000; /* 2px converted to rem */
   background: url('https://via.placeholder.com/70') center/cover no-repeat;
+  flex-shrink: 0; /* Prevent shrinking when used in flex container */
 }
 
 .user-info {
-  margin-top: 10px;
+  margin-top: 0.625rem; /* 10px converted to rem */
 }
 
 .username {
-  font-size: 18px;
+  font-size: 1.125rem; /* 18px converted to rem */
   font-weight: bold;
 }
 
 .email,
 .userid {
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px converted to rem */
   color: #333;
+  word-break: break-all; /* Allows long emails/IDs to wrap */
+}
+
+.userid {
+  white-space: normal; /* Allow User ID to wrap */
+}
+
+.userid span {
+  cursor: help; /* Indicates info tooltip */
 }
 
 .signout-btn {
-  margin-top: 10px;
+  margin-top: 0.625rem; /* 10px converted to rem */
   background: #d32020;
   color: white;
-  padding: 8px 20px;
+  padding: 0.5rem 1.25rem; /* 8px 20px converted to rem */
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem; /* 4px converted to rem */
   cursor: pointer;
+  font-size: 0.9rem; /* Slightly adjusted font size */
+  transition: background 0.2s ease;
+}
+
+.signout-btn:hover {
+  background: #b71c1c;
 }
 
 .help-docs {
-  padding: 15px 20px;
+  padding: 0.9375rem 1.25rem; /* 15px 20px converted to rem */
 }
 
 .help-docs h4 {
-  margin-bottom: 15px;
-  font-size: 14px;
+  margin-bottom: 0.9375rem; /* 15px converted to rem */
+  font-size: 0.875rem; /* 14px converted to rem */
   font-weight: bold;
   color: #111;
 }
@@ -66,17 +104,26 @@
 .help-docs li {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem; /* 10px converted to rem */
   font-weight: bold;
   color: #000;
+  font-size: 0.95rem; /* Slightly larger for readability */
+  cursor: pointer; /* Indicate it's clickable */
+  transition: color 0.2s ease;
+}
+
+.help-docs li:hover {
+  color: #007bff; /* Highlight on hover */
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+  width: 1.5rem; /* 24px converted to rem */
+  height: 1.5rem; /* 24px converted to rem */
+  margin-right: 0.625rem; /* 10px converted to rem */
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
+/* Icon backgrounds (already responsive due to contain) */
 .icon.book {
   background: url('https://img.icons8.com/fluency/48/book.png') no-repeat center/contain;
 }
@@ -98,13 +145,129 @@
 }
 
 .tooltip {
+  /* Positioning for the tooltip - generally shown on hover of the 'ⓘ' or similar */
   position: absolute;
-  top: 50%;
-  right: -90px;
-  transform: translateY(-50%);
+  top: 50%; /* Adjust as needed */
+  left: 100%; /* Position to the right of the parent */
+  transform: translateY(-50%) translateX(0.5rem); /* Adjust with a slight offset */
   background: #a659f5;
   color: white;
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 12px;
+  padding: 0.3125rem 0.625rem; /* 5px 10px converted to rem */
+  border-radius: 0.5rem; /* 8px converted to rem */
+  font-size: 0.75rem; /* 12px converted to rem */
+  white-space: nowrap; /* Prevent text from wrapping */
+  z-index: 10; /* Ensure it's above other elements */
+  /* Hide by default, show on hover/focus via JS or CSS adjacent sibling selector */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Example of how to show tooltip (would typically be more specific to an element hover) */
+.userid:hover .tooltip,
+.userid:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- Media Queries --- */
+
+/* For screens larger than default mobile (e.g., small tablets, landscape phones) */
+@media (min-width: 480px) {
+  .profile-dropdown {
+    border-radius: 0.75rem; /* Slightly larger radius */
+    box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.12); /* Slightly more prominent shadow */
+  }
+
+  .profile-header {
+    padding: 1.5rem; /* More padding */
+  }
+
+  .avatar {
+    width: 5rem; /* Slightly larger avatar */
+    height: 5rem;
+  }
+
+  .username {
+    font-size: 1.25rem; /* Larger font */
+  }
+
+  .email,
+  .userid {
+    font-size: 0.9rem; /* Slightly larger font */
+  }
+
+  .signout-btn {
+    padding: 0.6rem 1.5rem; /* More padding */
+    font-size: 0.95rem; /* Slightly larger font */
+  }
+
+  .help-docs {
+    padding: 1.25rem 1.5rem; /* More padding */
+  }
+
+  .help-docs h4 {
+    font-size: 0.95rem; /* Slightly larger font */
+  }
+
+  .help-docs li {
+    font-size: 1rem; /* Larger font */
+  }
+
+  .icon {
+    width: 1.6rem; /* Slightly larger icons */
+    height: 1.6rem;
+  }
+}
+
+/* For larger desktops (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .profile-dropdown {
+    max-width: 350px; /* Allow it to be slightly wider */
+  }
+
+  .profile-header {
+    padding: 2rem; /* Even more padding */
+  }
+
+  .avatar {
+    width: 5.5rem; /* Even larger avatar */
+    height: 5.5rem;
+  }
+
+  .username {
+    font-size: 1.4rem; /* Even larger font */
+  }
+
+  .email,
+  .userid {
+    font-size: 1rem; /* Even larger font */
+  }
+
+  .signout-btn {
+    padding: 0.7rem 1.8rem; /* More padding */
+    font-size: 1.05rem; /* Larger font */
+  }
+
+  .help-docs {
+    padding: 1.5rem 1.8rem; /* More padding */
+  }
+
+  .help-docs h4 {
+    font-size: 1rem; /* Larger font */
+  }
+
+  .help-docs li {
+    font-size: 1.05rem; /* Even larger font */
+  }
+
+  .icon {
+    width: 1.8rem; /* Even larger icons */
+    height: 1.8rem;
+  }
+
+  /* Adjust tooltip position slightly for larger screens */
+  .tooltip {
+    transform: translateY(-50%) translateX(0.75rem);
+  }
 }

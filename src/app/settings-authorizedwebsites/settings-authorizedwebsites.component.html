@@ -1,30 +1,36 @@
-<div class="branding-left">
-  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
-  <span class="brand-name"></span>
-</div>
+<header class="branding-header">
+  <div class="branding-left">
+    <img src="assets/hylogo.PNG" alt="hy logo" class="logo" />
+    
+  </div>
+</header>
 
-<div class="top-right-icons">
-<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
- 
-</button>
- 
-<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
-</button>
-</div>
-
-<div class="app-container">
-  <app-sidebar class="sidebar"></app-sidebar>
-<div class="container">
-  <h2>Settings</h2>
-
-  <div class="section">
-    <h3>Authorized Websites</h3>
-    <p class="description">
-      View and manage the websites you've granted access to your account information.
-    </p>
+  <div class="top-right-icons">
+    <button [routerLink]="'/topbar'">
+      <img src="assets/logout.PNG" alt="Notifications" class="icon" />
+    </button>
+    <button [routerLink]="'/topbar1'">
+      <img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+    </button>
   </div>
 
-  <div class="content-box">
-    <p class="empty-message">You don’t have any authorized websites</p>
+<div class="main-layout">
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <div class="main-content">
+    <div class="container">
+      <h2>Settings</h2>
+
+      <div class="section">
+        <h3>Authorized Websites</h3>
+        <p class="description">
+          View and manage the websites you've granted access to your account information.
+        </p>
+      </div>
+
+      <div class="content-box">
+        <p class="empty-message">You don’t have any authorized websites</p>
+        </div>
+    </div>
   </div>
 </div>

@@ -1,84 +1,62 @@
-.profile-page {
-  display: flex;
-  height: 100vh;
-  background-color: #e3e9ef;
-
-  .profile-content {
-    flex: 1;
-    padding: 2rem;
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-
-    .profile-card {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-
-      .profile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .user-info {
-          display: flex;
-          align-items: center;
-
-          .avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 1rem;
-          }
-
-          p {
-            font-size: 14px;
-            color: gray;
-          }
-        }
-
-        .edit-btn {
-          background-color: #28a745;
-          color: white;
-          padding: 0.5rem 1rem;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-      }
-
-      .profile-details {
-        margin-top: 2rem;
-
-        .row {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 1rem;
-
-          div {
-            width: 48%;
-
-            label {
-              font-weight: bold;
-              font-size: 13px;
-              color: #555;
-            }
-
-            p {
-              margin-top: 5px;
-              font-size: 14px;
-            }
-          }
-        }
-      }
-    }
-  }
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background */
+  color: #333;
+}
+
+/* --- Header Container (Top Bar) --- */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%; /* Responsive padding for smaller screens */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Allow branding and icons to wrap if screen is very narrow */
+  min-height: 60px; /* Ensure a consistent header height */
+  position: sticky; /* Keep header visible on scroll */
+  top: 0;
+  z-index: 1000; /* Ensure header stays on top */
+}
+
+/* Make sure the header has no default padding */
+.branding-header {
+  display: flex;
+  justify-content: flex-start; /* Align items to left */
+  align-items: center;
+  padding: 0; /* Remove default padding if any */
+}
+
+/* Your existing branding-left */
+.branding-left {
+  display: flex;
+  align-items: center;
+  margin: 0; /* Remove default margin */
+}
+
+/* Logo styling */
+.branding-left .logo {
+  max-height: 40px;
+  margin-right: 10px;
+}
+
+/* Brand name styling */
+.branding-left .brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2070c0;
+  white-space: nowrap;
+}
 .top-right-icons {
   position: absolute;
   top: 12px;
@@ -105,47 +83,299 @@
     padding: 2px;
   }
 }
-.app-container {
+/* Container for branding + icons */
+.topbar {
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  justify-content: space-between; /* Branding left, icons right */
+  align-items: center;
+  padding: 0 1rem; /* Optional spacing on sides */
 }
 
+/* Your existing top-right-icons stays the same */
+.top-right-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0; /* Remove bottom margin if not needed */
+}
+
+/* --- Main Layout (Sidebar + Profile Content) --- */
+.main-layout {
+  display: flex;
+  /* Calculate height: full viewport height minus the header's height */
+  min-height: calc(100vh - 60px);
+  background-color: #e3e9ef; /* Background for the entire page body below header */
+}
+
+/* --- Sidebar --- */
 .sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
+  /* Default (Mobile): Sidebar is typically hidden or collapsed on small screens */
+  width: 0;
+  overflow: hidden; /* Hide content when collapsed */
+  flex-shrink: 0; /* Prevent it from shrinking more than 0 */
+  background-color: #1e88e5; /* Your provided sidebar background */
   color: white;
-  flex-shrink: 0;
+  transition: width 0.3s ease; /* Smooth transition for opening/closing */
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
-}
-.branding-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+/* --- Profile Content Area --- */
+.profile-content {
+  flex-grow: 1; /* Profile content takes up all available space */
+  padding: 1.5rem; /* Initial padding for mobile */
+  overflow-y: auto; /* Enable scrolling if content overflows vertically */
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  height: 40px;
-  margin-right: 10px;
-}
-.brand-name {
-  font-size: 24px;
+.profile-content h2 {
+  font-size: 1.8rem; /* Responsive font size */
   font-weight: bold;
-  color: #2070c0;
+  margin-bottom: 1.5rem;
+  color: #212529; /* Darker text for headings */
 }
 
+/* --- Profile Card --- */
+.profile-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem; /* Responsive padding for card */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  max-width: 900px; /* Limit max width of the card on very large screens */
+  margin: 0 auto; /* Center the card horizontally */
+}
 
+/* --- Profile Header (User Info + Edit Button) --- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  gap: 1rem; /* Space between wrapped items */
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  background-color: #007bff; /* Example background for avatar */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevent avatar from shrinking */
+}
+
+.user-info {
+  display: flex; /* Can use flex here if you put avatar inside later */
+  align-items: center; /* Vertically align content */
+  flex-grow: 1; /* Allow user info to take available horizontal space */
+  /* Remove .avatar margin-right: 1rem; from user-info since avatar is outside */
+}
+
+.user-info div {
+  text-align: left; /* Ensure text aligns left within its div */
+}
+
+.user-info strong {
+  display: block; /* Ensure username takes its own line */
+  font-size: 1.4rem; /* Responsive font size */
+  color: #343a40;
+}
+
+.user-info p {
+  font-size: 0.9rem; /* Responsive font size */
+  color: gray; /* Your provided color */
+}
+
+.edit-btn {
+  background-color: #28a745; /* Your provided color */
+  color: white;
+  padding: 0.6rem 1.2rem; /* Responsive padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem; /* Responsive font size */
+  transition: background-color 0.3s ease;
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+/* --- Profile Details (Rows of Data) --- */
+.profile-details {
+  margin-top: 1.5rem; /* Adjust margin-top */
+  display: flex;
+  flex-direction: column; /* Stack rows on mobile */
+  gap: 1rem; /* Space between rows */
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: column; /* Stack detail items within a row on mobile */
+  gap: 1rem; /* Space between detail items */
+}
+
+.detail-item {
+  flex: 1 1 100%; /* Default to full width for each item on mobile */
+  text-align: left; /* Ensure text aligns left */
+}
+
+.detail-item label {
+  display: block; /* Label on its own line */
+  font-weight: bold; /* Your provided style */
+  font-size: 0.75rem; /* Responsive font size */
+  color: #555; /* Your provided color */
+  margin-bottom: 0.2rem;
+  text-transform: uppercase; /* Add uppercase for labels */
+}
+
+.detail-item p {
+  margin-top: 5px; /* Your provided style */
+  font-size: 0.9rem; /* Responsive font size */
+  color: #343a40; /* Darker text for values */
+  word-wrap: break-word; /* Ensure long text wraps */
+}
+
+.full-width-item {
+  flex-basis: 100%; /* Ensure this item always takes full width */
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+  }
+
+  .profile-content {
+    padding: 2rem; /* More padding on larger screens */
+  }
+
+  .profile-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .profile-card {
+    padding: 2.5rem;
+  }
+
+  .profile-header {
+    flex-wrap: nowrap; /* Prevent header items from wrapping if space allows */
+  }
+
+  .user-info strong {
+    font-size: 1.5rem;
+  }
+
+  .user-info p {
+    font-size: 0.95rem;
+  }
+
+  .edit-btn {
+    font-size: 1rem;
+  }
+
+  .profile-details {
+    gap: 2rem; /* More space between rows on desktop */
+  }
+
+  .profile-row {
+    flex-direction: row; /* Arrange detail items side-by-side */
+    justify-content: space-between; /* Distribute items */
+    gap: 2rem; /* Space between side-by-side items */
+  }
+
+  .detail-item {
+    flex: 1 1 48%; /* Each item takes roughly half width, allowing some gap */
+  }
+
+  .full-width-item {
+    flex-basis: 100%; /* Still full width */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .profile-content {
+    padding: 3rem;
+  }
+  .profile-content h2 {
+    font-size: 2.5rem;
+  }
+  .profile-card {
+    padding: 3rem;
+  }
+}
+
+/* For very small mobile devices (e.g., width <= 400px) - further reduce sizes if needed */
+@media (max-width: 400px) {
+  .header-container {
+    padding: 0.7rem 0.8rem;
+  }
+  .branding-left .logo {
+    max-height: 32px;
+  }
+  .branding-left .brand-name {
+    font-size: 1.2rem;
+  }
+  .top-right-icons .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .profile-content {
+    padding: 0.8rem;
+  }
+  .profile-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .profile-card {
+    padding: 1rem;
+  }
+  .profile-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  .user-info strong {
+    font-size: 1.2rem;
+  }
+  .user-info p {
+    font-size: 0.8rem;
+  }
+  .edit-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .detail-item label {
+    font-size: 0.7rem;
+  }
+  .detail-item p {
+    font-size: 0.85rem;
+  }
+}

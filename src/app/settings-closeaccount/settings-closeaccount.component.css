@@ -1,98 +1,38 @@
-.container {
-  background-color: #e7ecf1;
-  padding: 30px 20px;
-  font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.section-header {
-  background-color: #dcdcdc;
-  padding: 16px;
-  border-radius: 6px 6px 0 0;
-}
-
-.section-header h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.section-header p {
-  font-size: 14px;
+body {
+  font-family: Arial, sans-serif; /* Consistent font-family */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
   color: #333;
 }
 
-.close-box {
-  background-color: #f4f6f8;
-  padding: 40px 20px;
-  text-align: center;
-  border-radius: 0 0 8px 8px;
-}
-
-.icon-wrapper {
-  background-color: #dedede;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 20px;
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.icon-wrapper img {
-  width: 64px;
-  height: 64px;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.warning-text {
-  font-size: 15px;
-  margin: 20px 0;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
 
-.close-btn {
-  background-color: #c62828;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.close-btn:hover {
-  background-color: #b71c1c;
-}
-.app-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
-  flex-shrink: 0;
-}
-
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
-}
 .top-right-icons {
   position: absolute;
   top: 12px;
@@ -119,25 +59,202 @@ h2 {
     padding: 2px;
   }
 }
-.branding-container {
+
+/* --- Main Layout (Sidebar + Main Content) --- */
+.main-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height below header */
+  background-color: #e9eff5; /* Light background for consistency */
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
+/* --- Sidebar --- */
+.sidebar {
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #1e88e5; /* Adjusted to match previous examples */
+  color: white;
+  transition: width 0.3s ease;
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+/* --- Main Content Area for Close Account --- */
+.main-content {
+  flex-grow: 1; /* Allows content to take up remaining space */
+  padding: 1.5rem; /* Responsive padding */
+  background-color: #e7ecf1; /* Background color for the content area */
+  overflow-y: auto; /* Allows content to scroll if it overflows */
 }
-.brand-name {
-  font-size: 24px;
+
+.container {
+  max-width: 800px; /* Max width for the settings content */
+  width: 100%; /* Take full width on small screens */
+  margin: 0 auto; /* Center the content on larger screens */
+}
+
+.container h2 {
+  font-size: 1.8rem; /* Responsive font size */
   font-weight: bold;
-  color: #2070c0;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* --- Section Header --- */
+.section-header {
+  background-color: #dcdcdc;
+  padding: 1rem; /* Responsive padding (16px converted) */
+  border-radius: 6px 6px 0 0;
+}
+
+.section-header h3 {
+  font-size: 1.25rem; /* Responsive font size */
+  font-weight: bold;
+  margin-bottom: 0.4rem; /* Responsive margin (4px converted) */
+  color: #333;
+}
+
+.section-header p {
+  font-size: 0.9rem; /* Responsive font size (14px converted) */
+  color: #333;
+  margin-bottom: 0; /* Remove default paragraph margin if any */
+}
+
+/* --- Close Box --- */
+.close-box {
+  background-color: #f4f6f8;
+  padding: 2.5rem 1.5rem; /* Responsive padding (40px 20px converted) */
+  text-align: center;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
+}
+
+.icon-wrapper {
+  background-color: #dedede;
+  border-radius: 50%;
+  width: 100px; /* Responsive width */
+  height: 100px; /* Responsive height */
+  margin: 0 auto 1.5rem; /* Responsive margin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.icon-wrapper img {
+  width: 50px; /* Responsive image size */
+  height: 50px; /* Responsive image size */
+  object-fit: contain;
+}
+
+.warning-text {
+  font-size: 0.95rem; /* Responsive font size (15px converted) */
+  margin: 1.25rem auto; /* Responsive margin (20px auto converted) */
+  max-width: 500px; /* Max width for readability */
+  line-height: 1.5;
+  color: #222;
+}
+
+.close-btn {
+  background-color: #c62828;
+  color: white;
+  padding: 0.8rem 1.5rem; /* Responsive padding (10px 20px converted) */
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem; /* Responsive font size (14px converted) */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.close-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding: 2rem 1.5rem; /* Consistent padding */
+  }
+
+  .main-content {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .container h2 {
+    font-size: 2.2rem; /* Larger font size */
+  }
+
+  .section-header {
+    padding: 1.5rem; /* More generous padding */
+  }
+
+  .section-header h3 {
+    font-size: 1.4rem; /* Larger font size */
+  }
+
+  .section-header p {
+    font-size: 1rem; /* Larger font size */
+  }
+
+  .close-box {
+    padding: 3rem 2rem; /* More generous padding */
+  }
+
+  .icon-wrapper {
+    width: 120px; /* Larger icon on desktop */
+    height: 120px; /* Larger icon on desktop */
+    margin-bottom: 2rem;
+  }
+
+  .icon-wrapper img {
+    width: 64px; /* Larger image inside icon wrapper */
+    height: 64px; /* Larger image inside icon wrapper */
+  }
+
+  .warning-text {
+    font-size: 1rem; /* Larger font size */
+    margin: 1.5rem auto; /* Adjust margin */
+  }
+
+  .close-btn {
+    padding: 1rem 2rem; /* More padding */
+    font-size: 1rem; /* Larger font size */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .main-content {
+    padding: 3rem;
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
 }

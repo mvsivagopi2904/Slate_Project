@@ -1,31 +1,22 @@
-<div class="branding-left">
-  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
-  <span class="brand-name"></span>
-</div>
+<header class="branding-header">
+  <div class="branding-left">
+    <img src="assets/hylogo.PNG" alt="hy logo" class="logo" />
+    
+  </div>
+</header>
 
-<div class="top-right-icons">
-<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
- 
-</button>
- 
-<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
-</button>
-</div>
-
-<div class="edit-profile-container">
-  <div class="sidebar">
-     
-    <!-- <div class="logo">hy</div> -->
-    <nav>
-      <div class="menu active">Profile</div>
-      <div class="submenu selected">• Personal Information</div>
-      <div class="submenu">Email Address</div>
-      <div class="submenu">Mobile Numbers</div>
-      <div class="menu">Security</div>
-      <div class="menu">Settings</div>
-    </nav>
+  <div class="top-right-icons">
+    <button [routerLink]="'/topbar'">
+      <img src="assets/logout.PNG" alt="Notifications" class="icon" />
+    </button>
+    <button [routerLink]="'/topbar1'">
+      <img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+    </button>
   </div>
 
+
+<div class="main-layout">
+  <app-sidebar class="sidebar"></app-sidebar>
   <div class="profile-form-container">
     <h2>Profile</h2>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-grid">
@@ -90,10 +81,13 @@
       </div>
 
       <div class="button-group">
-        <button type="submit" class="save-btn" [disabled]="profileForm.invalid">Save</button>
-        <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="save-btn" [disabled]="profileForm.invalid">
+          Save
+        </button>
+        <button type="button" class="cancel-btn" (click)="onCancel()">
+          Cancel
+        </button>
       </div>
     </form>
   </div>
 </div>
-

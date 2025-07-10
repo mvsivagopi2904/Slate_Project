@@ -1,126 +1,36 @@
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif; /* Adjusted to a common sans-serif font */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
+  color: #333;
+}
+
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 1000;
-
-  .modal {
-    background: white;
-    border-radius: 8px;
-    width: 450px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-
-    .modal-header {
-      background-color: #d9d9d9;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      h3 {
-        margin: 0;
-      }
-
-      .close-btn {
-        background: none;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-      }
-    }
-
-    .modal-body {
-      padding: 20px;
-
-      p {
-        font-size: 14px;
-        margin-bottom: 15px;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-
-        label {
-          margin-bottom: 5px;
-          font-weight: 500;
-        }
-
-        input {
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          margin-bottom: 10px;
-
-          &.invalid {
-            border-color: red;
-          }
-        }
-
-        .error {
-          color: red;
-          font-size: 12px;
-          margin-bottom: 10px;
-        }
-
-        .resend {
-          font-size: 13px;
-          margin-bottom: 15px;
-          color: #007bff;
-          cursor: pointer;
-          text-decoration: underline;
-          width: fit-content;
-        }
-
-        .button-group {
-          display: flex;
-          gap: 10px;
-
-          .verify-btn {
-            padding: 8px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-
-            &:disabled {
-              background-color: #aaa;
-              cursor: not-allowed;
-            }
-          }
-
-          .back-btn {
-            padding: 8px 20px;
-            background-color: #e0e0e0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.app-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #1e88e5;
-  color: white;
-  flex-shrink: 0;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
 .top-right-icons {
   position: absolute;
@@ -148,25 +58,282 @@
     padding: 2px;
   }
 }
-.branding-container {
+/* --- Main Layout (Sidebar + Page Content) --- */
+.main-layout {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height */
+  background-color: #e9eff5; /* Light background for consistency */
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #1e88e5;
+  color: white;
+  transition: width 0.3s ease;
+}
+
+/* Placeholder for content behind the modal */
+.page-content-behind-modal {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  text-align: center; /* Just for demonstration */
+}
+
+/* --- Modal Overlay and Modal Styles --- */
+.overlay {
+  position: fixed; /* Fixes it to the viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for better contrast */
+  display: flex; /* Use flex to center the modal */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  z-index: 2000; /* Ensure it's above all other content */
+  padding: 1rem; /* Add some padding for very small screens */
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 95%; /* Take up most of the width on small screens */
+  max-width: 450px; /* Your original max-width */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Ensures rounded corners clip content */
+  max-height: 90vh; /* Prevent modal from exceeding screen height */
+  overflow-y: auto; /* Add scrollbar if content is too long */
+}
+
+.modal-header {
+  background-color: #d9d9d9;
+  padding: 1rem; /* Responsive padding (15px converted to rem) */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ccc; /* Added a subtle border */
 }
 
-.branding-left {
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem; /* Responsive font size */
+  color: #333;
+}
+
+.modal-header .close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem; /* Responsive font size (20px converted to rem) */
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.modal-header .close-btn:hover {
+  color: #000;
+}
+
+.modal-body {
+  padding: 1.25rem; /* Responsive padding (20px converted to rem) */
+}
+
+.modal-body .otp-info {
+  margin-bottom: 1rem; /* Responsive margin (15px converted to rem) */
+  font-size: 0.9rem; /* Responsive font size (14px converted to rem) */
+  color: #555;
+  line-height: 1.5;
+  text-align: center; /* Center the OTP info text */
+}
+
+/* Form styling */
+.modal-body form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+.modal-body form label {
+  margin-bottom: 0.3125rem; /* 5px converted to rem */
+  font-size: 0.95rem; /* Responsive font size */
+  font-weight: 500;
+  color: #333;
 }
-.brand-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2070c0;
+
+.modal-body form input[type='text'] {
+  padding: 0.625rem; /* Responsive padding (8px converted to rem) */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 0.625rem; /* 10px converted to rem */
+  font-size: 1rem; /* Responsive font size */
+  text-align: center; /* Center placeholder for OTP */
+  letter-spacing: 0.1rem; /* Add some spacing for OTP digits */
+
+  &.invalid {
+    border-color: red;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 0.75rem; /* Responsive font size (12px converted to rem) */
+  margin-bottom: 0.625rem; /* 10px converted to rem */
+}
+
+.resend-otp-link {
+  font-size: 0.8125rem; /* Responsive font size (13px converted to rem) */
+  margin-bottom: 1rem; /* Responsive margin (15px converted to rem) */
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  width: fit-content; /* Ensure the underline only spans the text */
+  align-self: flex-start; /* Align to the left of the form */
+  transition: color 0.2s ease;
+}
+
+.resend-otp-link:hover {
+  color: #0056b3;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.625rem; /* 10px converted to rem */
+  margin-top: 1rem; /* Space above buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  justify-content: flex-end; /* Align buttons to the right by default */
+
+  .verify-btn,
+  .back-btn {
+    padding: 0.625rem 1.25rem; /* Responsive padding (8px 20px converted to rem) */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Responsive font size */
+    flex-grow: 1; /* Allow buttons to grow to fill space */
+    max-width: 150px; /* Limit max width for buttons */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .verify-btn {
+    background-color: #007bff;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: #0056b3;
+    }
+
+    &:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+  }
+
+  .back-btn {
+    background-color: #e0e0e0;
+    color: #333;
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+  }
+
+  .page-content-behind-modal {
+    padding: 2.5rem;
+  }
+
+  .modal {
+    width: 450px; /* Fixed width on larger screens */
+  }
+
+  .modal-header {
+    padding: 1rem 1.5rem; /* Slightly more padding */
+  }
+
+  .modal-body {
+    padding: 1.5rem 2rem; /* Slightly more padding */
+  }
+
+  .modal-body .otp-info {
+    text-align: left; /* Align to left on larger screens */
+  }
+
+  .modal-body form input[type='text'] {
+    padding: 0.75rem; /* Slightly more padding */
+  }
+
+  .resend-otp-link {
+    align-self: flex-end; /* Align to the right of the form */
+  }
+
+  .button-group {
+    flex-wrap: nowrap; /* Prevent buttons from wrapping */
+    justify-content: flex-end; /* Align buttons to the right */
+  }
+
+  .button-group .verify-btn,
+  .button-group .back-btn {
+    flex-grow: 0; /* Don't grow, use defined width */
+    width: auto; /* Or set specific width like 100px */
+    padding: 0.625rem 1.5rem; /* Adjust padding */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .page-content-behind-modal {
+    padding: 3rem;
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
+}
+
+/* Adjust button group for very small screens if needed */
+@media (max-width: 380px) {
+  .button-group {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .button-group .verify-btn,
+  .button-group .back-btn {
+    max-width: 100%; /* Ensure full width when stacked */
+  }
 }

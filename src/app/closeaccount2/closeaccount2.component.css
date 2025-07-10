@@ -1,102 +1,36 @@
-.close-account-container {
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
+/* Basic Reset & Box-Sizing for consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.close-account-card {
-  background: #f4f4f4;
-  border-radius: 6px;
-  padding: 1.5rem;
-  border: 1px solid #ccc;
+body {
+  font-family: Arial, sans-serif; /* Consistent font-family */
+  line-height: 1.6;
+  background-color: #f4f7f6; /* Light background for the whole page */
+  color: #333;
 }
 
-.close-account-header {
-  background: #d9d9d9;
-  padding: 0.8rem 1rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-
-  h3 {
-    margin: 0;
-  }
-}
-
-.instruction-note {
-  font-size: 0.9rem;
-  color: #444;
-  margin-top: 0.5rem;
-}
-
-.steps {
-  margin-top: 1rem;
+/* --- Header Container (Top Bar) --- */
+.branding-left {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  .step {
-    display: flex;
-    gap: 1rem;
-
-    strong {
-      font-size: 1.5rem;
-      color: green;
-    }
-
-    h4 {
-      margin: 0;
-    }
-
-    p {
-      margin: 0.3rem 0 0;
-    }
-  }
+  align-items: center;
+  margin-bottom: 0.5rem; /* Space below on very small screens if content wraps */
 }
 
-.buttons {
-  margin-top: 2rem;
-  display: flex;
-  gap: 1rem;
-
-  .proceed-btn {
-    background-color: #0070c0;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .cancel-btn {
-    background-color: #e0e0e0;
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-}
-.app-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
+.branding-left .logo {
+  max-height: 40px; /* Max size for logo */
+  margin-right: 10px;
 }
 
-.sidebar {
-  width: 250px; 
-  background-color: #1e88e5; 
-  color: white;
-  flex-shrink: 0;
-}
-
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
-  overflow-y: auto;
+.branding-left .brand-name {
+  font-size: 1.5rem; /* Responsive font size */
+  font-weight: bold;
+  color: #2070c0; /* Match your provided color */
+  white-space: nowrap; /* Prevent brand name from wrapping */
 }
 .top-right-icons {
   position: absolute;
@@ -124,25 +58,250 @@
     padding: 2px;
   }
 }
-.branding-container {
+/* --- Main Layout (Sidebar + Main Content) --- */
+.main-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  min-height: calc(100vh - 60px); /* Fill remaining viewport height below header */
+  background-color: #e9eff5; /* Light background for consistency */
 }
 
-.branding-left {
-  display: flex;
-  align-items: center;
+/* --- Sidebar --- */
+.sidebar {
+  /* Default (Mobile): Sidebar is hidden by default */
+  width: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #1e88e5; /* Adjusted to match previous examples */
+  color: white;
+  transition: width 0.3s ease;
 }
 
-.logo {
-  height: 40px;
-  margin-right: 10px;
+/* --- Main Content Area for Close Account Overview --- */
+.main-content {
+  flex-grow: 1; /* Allows content to take up remaining space */
+  padding: 1.5rem; /* Responsive padding */
+  background-color: #f1f4f9; /* Background color for the content area */
+  overflow-y: auto; /* Allows content to scroll if it overflows */
 }
-.brand-name {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2070c0;
+
+.close-account-container {
+  max-width: 800px; /* Max width for the content */
+  width: 100%; /* Take full width on small screens */
+  margin: 0 auto; /* Center the content on larger screens */
+  padding: 0; /* Remove redundant padding as main-content already has it */
+}
+
+.close-account-container h2 {
+  font-size: 1.8rem; /* Responsive font size */
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* --- Close Account Card --- */
+.close-account-card {
+  background: #f4f4f4;
+  border-radius: 6px;
+  padding: 1.5rem; /* Responsive padding (24px) */
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
+}
+
+.close-account-header {
+  background: #d9d9d9;
+  padding: 0.8rem 1rem; /* Responsive padding (12.8px 16px) */
+  border-radius: 4px;
+  margin-bottom: 1rem; /* Responsive margin (16px) */
+}
+
+.close-account-header h3 {
+  margin: 0;
+  font-size: 1.25rem; /* Responsive font size (20px) */
+  color: #333;
+}
+
+.close-account-card p {
+  font-size: 0.95rem; /* Responsive font size (15.2px) */
+  margin-bottom: 0.8rem; /* Consistent spacing */
+  color: #555;
+}
+
+.instruction-note {
+  font-size: 0.85rem; /* Slightly smaller for note */
+  color: #444;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* --- Steps Section --- */
+.steps {
+  margin-top: 1.5rem; /* Responsive margin */
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Responsive gap between steps */
+}
+
+.steps .step {
+  display: flex;
+  gap: 1rem; /* Gap between number and content */
+  align-items: flex-start; /* Align number to the top of the text */
+}
+
+.steps .step strong {
+  font-size: 1.6rem; /* Responsive number size (25.6px) */
+  color: #28a745; /* Green color for numbers */
+  flex-shrink: 0; /* Prevent number from shrinking */
+  line-height: 1.2; /* Adjust line height for better alignment with text */
+  margin-top: 0.1rem; /* Slight adjustment to align with text */
+}
+
+.steps .step h4 {
+  margin: 0;
+  font-size: 1.05rem; /* Responsive heading size (16.8px) */
+  color: #222;
+}
+
+.steps .step p {
+  margin: 0.2rem 0 0; /* Responsive margin (3.2px) */
+  font-size: 0.9rem; /* Responsive paragraph size (14.4px) */
+  color: #666;
+}
+
+/* --- Buttons Section --- */
+.buttons {
+  margin-top: 2rem; /* Responsive margin */
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  justify-content: center; /* Center buttons horizontally */
+  gap: 1rem; /* Responsive gap between buttons */
+}
+
+.buttons .proceed-btn,
+.buttons .cancel-btn {
+  padding: 0.6rem 1.5rem; /* Responsive padding (9.6px 24px) */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem; /* Responsive font size (15.2px) */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex-grow: 1; /* Allow buttons to grow to fill space */
+  max-width: 150px; /* Limit max width for individual buttons */
+}
+
+.buttons .proceed-btn {
+  background-color: #0070c0;
+  color: white;
+}
+
+.buttons .cancel-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.buttons .proceed-btn:hover,
+.buttons .cancel-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* --- Media Queries --- */
+
+/* For tablets and larger screens (e.g., width >= 768px) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 1rem 8%;
+  }
+
+  .branding-left,
+  .top-right-icons {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .main-layout {
+    flex-direction: row; /* Sidebar and content side-by-side */
+  }
+
+  .sidebar {
+    width: 250px; /* Sidebar becomes visible */
+    padding: 2rem 1.5rem; /* Consistent padding */
+  }
+
+  .main-content {
+    padding: 2rem; /* More generous padding */
+  }
+
+  .close-account-container h2 {
+    font-size: 2.2rem; /* Larger font size */
+  }
+
+  .close-account-card {
+    padding: 2.5rem; /* More generous padding */
+  }
+
+  .close-account-header {
+    padding: 1rem 1.5rem; /* More generous padding */
+  }
+
+  .close-account-header h3 {
+    font-size: 1.4rem; /* Larger font size */
+  }
+
+  .close-account-card p {
+    font-size: 1rem; /* Larger font size */
+  }
+
+  .instruction-note {
+    font-size: 0.9rem; /* Larger note font */
+  }
+
+  .steps {
+    gap: 1.5rem; /* Larger gap between steps */
+  }
+
+  .steps .step strong {
+    font-size: 1.8rem; /* Larger number size */
+  }
+
+  .steps .step h4 {
+    font-size: 1.2rem; /* Larger heading size */
+  }
+
+  .steps .step p {
+    font-size: 0.95rem; /* Larger paragraph size */
+  }
+
+  .buttons {
+    justify-content: flex-end; /* Align buttons to the right */
+  }
+
+  .buttons .proceed-btn,
+  .buttons .cancel-btn {
+    padding: 0.8rem 2rem; /* More padding */
+    font-size: 1rem; /* Larger font size */
+    flex-grow: 0; /* Don't force buttons to grow */
+  }
+}
+
+/* For larger desktops (e.g., width >= 1024px) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 1rem 10%;
+  }
+  .sidebar {
+    width: 280px; /* Slightly wider sidebar on large screens */
+  }
+  .main-content {
+    padding: 3rem;
+  }
+  .close-account-container h2 {
+    font-size: 2.5rem; /* Even larger font size */
+  }
+}
+
+/* Hide sidebar on smaller screens (less than 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 0; /* Ensures sidebar is collapsed on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
 }

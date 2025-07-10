@@ -1,21 +1,22 @@
-<div class="branding-left">
-  <img src="assets\hylogo.PNG" alt="hy logo" class="logo" />
-  <span class="brand-name"></span>
-</div>
+<!-- Example full header -->
+<header class="branding-header">
+  <div class="branding-left">
+    <img src="assets/hylogo.PNG" alt="hy logo" class="logo" />
+    
+  </div>
+</header>
 
-<div class="top-right-icons">
-<button [routerLink]="'/topbar'"><img src="assets/logout.PNG" alt="Notifications" class="icon" />
- 
-</button>
- 
-<button [routerLink]="'/topbar1'"><img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
-</button>
-</div>
+  <div class="top-right-icons">
+    <button [routerLink]="'/topbar'">
+      <img src="assets/logout.PNG" alt="Notifications" class="icon" />
+    </button>
+    <button [routerLink]="'/topbar1'">
+      <img src="assets/logout1.PNG" alt="Profile" class="icon user-icon" />
+    </button>
+  </div>
 
-<div class="profile-page">
- 
 
-  <div class="app-container">
+<div class="main-layout">
   <app-sidebar class="sidebar"></app-sidebar>
 
   <div class="profile-content">
@@ -23,6 +24,9 @@
 
     <div class="profile-card">
       <div class="profile-header">
+        <div class="profile-avatar">
+          <span>U</span>
+        </div>
         <div class="user-info">
           <div>
             <strong>User</strong>
@@ -33,38 +37,38 @@
       </div>
 
       <div class="profile-details">
-        <div class="row">
-          <div>
+        <div class="profile-row">
+          <div class="detail-item">
             <label>Full Name</label>
             <p>User</p>
           </div>
-          <div>
+          <div class="detail-item">
             <label>Display Name</label>
             <p>User</p>
           </div>
         </div>
-        <div class="row">
-          <div>
+        <div class="profile-row">
+          <div class="detail-item">
             <label>Gender</label>
             <p>Male</p>
           </div>
-          <div>
+          <div class="detail-item">
             <label>Country/Region</label>
             <p>🇮🇳 India</p>
           </div>
         </div>
-        <div class="row">
-          <div>
+        <div class="profile-row">
+          <div class="detail-item">
             <label>State</label>
             <p>Telangana</p>
           </div>
-          <div>
+          <div class="detail-item">
             <label>Language</label>
             <p>English - United States</p>
           </div>
         </div>
-        <div class="row">
-          <div>
+        <div class="profile-row">
+          <div class="detail-item full-width-item">
             <label>Time zone</label>
             <p>(GMT +05:30) India Standard Time (Asia/Kolkata)</p>
           </div>
